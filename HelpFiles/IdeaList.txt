@@ -1,10 +1,16 @@
 ## List of Ideas, Suggestions and Tips
 
+## Original Ideas
+    > Data Scraper
+    > Data Exporter (Word, Excel, csv, rtf, images, videos)
+
 ## ideas by Paul
 
 
 ## ideas by Sarath
     > MyVault
     > Youtube (and other files) downloader.
+    > Web Site/ Web App
+    > Automator
 
 ## ideas by Thumssy

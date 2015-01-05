@@ -1,3 +1,8 @@
 ## List of References for the Project
 
-A little busy now, will update soon!!! :)
+PySide
+https://www.youtube.com/playlist?list=PLA955A8F9A95378CE
+
+Web Scrapping with Python
+https://www.youtube.com/user/creeveshft/videos
+
