@@ -5,7 +5,7 @@ class DataCollector():
 	The links are first collected from google, Yahoo and Bing, and is then used to retrieve the pages corresponding to
 	these links, extract text from the links and return it.
 
-	Class Managed By : Thumssy
+	Class Managed By : Thumssy Nazar
 	"""
 
 	def __init__(self, keyword, type):
@@ -16,11 +16,11 @@ class DataCollector():
 		:return: self.data
 		"""
 		self.type = type
-		self.keyword = keyword # keyword to be searched
-		self.data = [] # the final data array. contains data as [title, [link, data], [title, link, data] ...]
-		self.glinks = [] # links from google
-		self.ylinks = [] # links from yahoo
-		self.blinks = [] # links from bing
+		self.keyword = keyword  # keyword to be searched
+		self.data = []  # the final data array. contains data as [title, [link, data], [title, link, data] ...]
+		self.glinks = []  # links from google
+		self.ylinks = []  # links from yahoo
+		self.blinks = []  # links from bing
 		pass
 
 	def get_links(self, pages):
