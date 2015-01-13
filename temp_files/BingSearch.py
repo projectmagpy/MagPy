@@ -1,4 +1,3 @@
-
 __author__ = 'T90'
 __version__ = '1.0.0'
 
@@ -12,7 +11,7 @@ def searchhtml(keyword, num):
 	ie = mechanize.Browser()
 	ie.set_handle_robots(False)
 	ie.addheaders = [('User-agent',
-						  'Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.2; Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; .NET4.0C; .NET4.0E; InfoPath.3) ')]
+					  'Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.2; Trident/4.0; SLCC2; .NET CLR 2.0.50727; .NET CLR 3.5.30729; .NET CLR 3.0.30729; Media Center PC 6.0; .NET4.0C; .NET4.0E; InfoPath.3) ')]
 
 	base_url = 'http://www.bing.com/search?q='
 	search_url = base_url + keyword.replace(' ', '+')
@@ -32,7 +31,8 @@ def getlinks(keyword, num):
 	h2re = re.compile('<a[^<>]*>(.*)</a>')
 	for a in bs:
 		item = str(BeautifulSoup(str(a)).find('h2'))
-		heading = HTMLParser.HTMLParser().unescape(re.findall(h2re, item)[0].replace('<strong>', '').replace('</strong>', ''))
+		heading = HTMLParser.HTMLParser().unescape(
+			re.findall(h2re, item)[0].replace('<strong>', '').replace('</strong>', ''))
 		results.append([heading, re.findall(linkre, item)[0]])
 	return results
 

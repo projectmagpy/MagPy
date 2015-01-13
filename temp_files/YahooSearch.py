@@ -1,9 +1,6 @@
 __author__ = 'T90'
 __version__ = '1.0.0'
 
-__author__ = 'T90'
-__version__ = '1.0.0'
-
 import mechanize
 from BeautifulSoup import BeautifulSoup
 import re
