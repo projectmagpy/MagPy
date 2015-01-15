@@ -1,4 +1,6 @@
-from Scrapping_Experiments.Search import YahooSearch as yahoo, GoogleSearch, BingSearch
+import YahooSearch as yahoo
+import GoogleSearch as goog
+import BingSearch as bing
 
 __author__ = 'T90'
 __version__ = '1.0.0'
