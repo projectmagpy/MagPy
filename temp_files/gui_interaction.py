@@ -20,7 +20,7 @@ class gui_interaction(QWidget):
 		super(gui_interaction, self).__init()
 		# gui.setupui(self)
 
-	def initUi(self):
+	def initUi(self):0
 		pass
 
 	def updateUi(self):
