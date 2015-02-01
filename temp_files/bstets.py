@@ -1,17 +1,19 @@
 from BeautifulSoup import BeautifulSoup as bs
 import urllib
 
-b = bs(urllib.urlopen("http://www.crummy.com/software/BeautifulSoup/bs3/documentation.html").read())
+b = bs(urllib.urlopen(
+	"http://www.mapsofindia.com/railway-timetable/trivandrum-cntl-to-mangalore-cntl-route-of-maveli-express.html").read())
+demo = ['ERNAKULAM JN', 'AMBALAPUZHA', 'KOZHIKODE']
+t = []
 
-t = b.findParent(text="Modifying the Parse Tree")
-print b.findPrevious(text="Modifying the Parse Tree")
+for d in demo:
+	t.append(b.find(text=d).previous)
 print t
 
-x = [tag for tag in b.find(text="Modifying the Parse Tree").findParents()]
-
-id = x[0].id
-i = 0
-while id is None and i < len(x):
-	id = x[i].id
-	print x[i].name, x[i].id, x[i].class_
-	i += 1
+for i in xrange(0, len(t)):
+	temp = []
+	if t[i].get('id', None) is not None:
+		print t[i].get('id')
+	if t[i].get('class', None) is not None:
+		print t[i].get('class')
+	print t[i].name
