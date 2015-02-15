@@ -12,8 +12,11 @@ class recursivenav():
         self.data = []
 
     def search(self, links=False):
-        while len(self.links) > 0 and self.limit >= len(self.visited):
+        if self.limit == 0:
+            self.limit = 100
+        while len(self.links) > 0 and len(self.visited)<self.limit:
             l = self.links[0]
+            print l
             self.links.pop(0)
             self.visited.append(l)
             try:

@@ -21,8 +21,6 @@ def translate(text, langid=0):
             result += html.split(",")[0][4:-1] + "\n"
         return result
 
-
-
 if __name__ == '__main__':
     print translate(text=raw_input("enter text "), langid=-1)
 
