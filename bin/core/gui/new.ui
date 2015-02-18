@@ -1114,16 +1114,7 @@ QStatusBar::item {
          <property name="spacing">
           <number>2</number>
          </property>
-         <property name="leftMargin">
-          <number>0</number>
-         </property>
-         <property name="topMargin">
-          <number>0</number>
-         </property>
-         <property name="rightMargin">
-          <number>5</number>
-         </property>
-         <property name="bottomMargin">
+         <property name="margin">
           <number>0</number>
          </property>
          <item>
@@ -1428,7 +1419,7 @@ QStatusBar::item {
             <item>
              <widget class="QStackedWidget" name="stackedWidget">
               <property name="currentIndex">
-               <number>1</number>
+               <number>3</number>
               </property>
               <widget class="QWidget" name="filetab">
                <layout class="QVBoxLayout" name="verticalLayout_7">

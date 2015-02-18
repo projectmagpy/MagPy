@@ -23,14 +23,8 @@ class gui_interaction(QDialog, gui.Ui_main_window):
 	def __init__(self):
 		super(gui_interaction, self).__init__()
 		self.setupUi(self)
-		self.setWindowFlags(Qt.FramelessWindowHint)
+		# self.setWindowFlags(Qt.FramelessWindowHint)
 		self.closebtn.clicked.connect(self.close)
-		# self.tasklist.setSpacing(3)
-		# self.selnavlist.setSpacing(3)
-		# self.navnavlist.setSpacing(3)
-		# self.filenavlist.setSpacing(3)
-		# self.exportnavlist.setSpacing(3)
-		self.center()
 		self.initUi()
 		self.show()
 
@@ -41,15 +35,11 @@ class gui_interaction(QDialog, gui.Ui_main_window):
 		self.move(qr.topLeft())
 
 	def initUi(self):
+		self.center()
 		self.stackedWidget.setCurrentIndex(1)
 		self.currentbtn.setText(data.tabHeadings[1])
 		self.prevbtn.setText(data.tabHeadings[0])
 		self.nextbtn.setText(data.tabHeadings[2])
-		# self.navlist = self.navnavlist
-		# self.sellist = self.selnavlist
-		# self.filelist = self.filenavlist
-		# self.exportlist = self.exportnavlist
-		# self.navclist = self.selnavlist
 		self.items, index, tabnum = [], 0, 0
 		tabWidgets = [self.filenavlist, self.navnavlist, self.selnavlist, self.constraintlist, self.exportnavlist]
 		for tab in data.tabHeadings:
@@ -66,39 +56,6 @@ class gui_interaction(QDialog, gui.Ui_main_window):
 				self.items.append(li)
 				index += 1
 			tabnum += 1
-		# for i in [x for x in range(0, 7)]:
-		# 	li = right_item.Item()
-		# 	li.label.setText("MyItem " + str(i))
-		# 	li.type.setText("Item Selection")
-		# 	listItem = QListWidgetItem(self.sellist)
-		# 	listItem.setSizeHint(li.sizeHint())
-		# 	li.addbtn.clicked.connect(lambda n=index: self.addToTaskList("sel", n))
-		# 	self.sellist.addItem(listItem)
-		# 	self.sellist.setItemWidget(listItem, li)
-		# 	self.items.append(li)
-		# 	index += 1
-		# for i in [x for x in range(0, 3)]:
-		# 	li = right_item.Item()
-		# 	li.label.setText("MyItem " + str(i))
-		# 	li.type.setText("File Management")
-		# 	listItem = QListWidgetItem(self.filelist)
-		# 	listItem.setSizeHint(li.sizeHint())
-		# 	li.addbtn.clicked.connect(lambda n=index: self.addToTaskList("file", n))
-		# 	self.filelist.addItem(listItem)
-		# 	self.filelist.setItemWidget(listItem, li)
-		# 	self.items.append(li)
-		# 	index += 1
-		# for i in [x for x in range(0, 5)]:
-		# 	li = right_item.Item()
-		# 	li.label.setText("MyItem " + str(i))
-		# 	li.type.setText("Data Export")
-		# 	listItem = QListWidgetItem(self.exportlist)
-		# 	listItem.setSizeHint(li.sizeHint())
-		# 	li.addbtn.clicked.connect(lambda n=index: self.addToTaskList("export", n))
-		# 	self.exportlist.addItem(listItem)
-		# 	self.exportlist.setItemWidget(listItem, li)
-		# 	self.items.append(li)
-		# 	index += 1
 
 		self.prevbtn.clicked.connect(self.prev)
 		self.nextbtn.clicked.connect(self.next)

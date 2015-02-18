@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'new.ui'
 #
-# Created: Wed Feb 18 19:59:59 2015
+# Created: Wed Feb 18 20:10:08 2015
 #      by: pyside-uic 0.2.15 running on PySide 1.2.2
 #
 # WARNING! All changes made in this file will be lost!
@@ -1072,7 +1072,7 @@ class Ui_main_window(object):
         self.center_frame.setObjectName("center_frame")
         self.horizontalLayout = QtGui.QHBoxLayout(self.center_frame)
         self.horizontalLayout.setSpacing(2)
-        self.horizontalLayout.setContentsMargins(0, 0, 5, 0)
+        self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout.setObjectName("horizontalLayout")
         self.frame = QtGui.QFrame(self.center_frame)
         self.frame.setStyleSheet("")
@@ -1377,7 +1377,7 @@ class Ui_main_window(object):
         self.verticalLayout.addWidget(self.base_frame)
 
         self.retranslateUi(main_window)
-        self.stackedWidget.setCurrentIndex(1)
+        self.stackedWidget.setCurrentIndex(3)
         QtCore.QMetaObject.connectSlotsByName(main_window)
 
     def retranslateUi(self, main_window):
