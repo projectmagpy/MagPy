@@ -1,7 +1,7 @@
 from PySide.QtGui import *
-import right_l_item
+import left_l_item
 
-class Item(QFrame, right_l_item.Ui_Frame):
+class Item(QFrame, left_l_item.Ui_Frame):
 
 	def __init__(self):
 		super(Item, self).__init__()

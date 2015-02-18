@@ -1,0 +1,16 @@
+CREATE DATABASE company;
+CREATE TABLE login(
+id int(10) NOT NULL AUTO_INCREMENT,
+fname varchar(255) NOT NULL,
+lname varchar(255) NOT NULL,
+username varchar(255) NOT NULL,
+password varchar(255) NOT NULL,
+PRIMARY KEY (id)
+)
+
+CREATE TABLE links(
+id int(10) NOT NULL AUTO_INCREMENT,
+username varchar(255) NOT NULL,
+url varchar(2550) NOT NULL,
+PRIMARY KEY (id)
+)

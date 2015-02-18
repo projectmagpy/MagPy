@@ -223,5 +223,5 @@ class SearchEngine():
 
 
 if __name__ == '__main__':
-    s = SearchEngine("hello world")
+    s = SearchEngine("hello world", pages=3)
     s.search()
