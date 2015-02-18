@@ -1,8 +1,9 @@
 from sys import argv
-from PySide.QtGui import QDialog, QApplication, QListWidgetItem, QDesktopWidget
+from PySide.QtGui import *
 from PySide.QtCore import Qt
 import gui, right_item, left_item
 import guidata as data
+import infoDialogs as d
 
 
 class gui_interaction(QDialog, gui.Ui_main_window):
@@ -22,6 +23,10 @@ class gui_interaction(QDialog, gui.Ui_main_window):
 
 	def __init__(self):
 		super(gui_interaction, self).__init__()
+
+		self.tasksAdded = []
+		self.items, self.index, self.tabnum = [], 0, 0
+
 		self.setupUi(self)
 		# self.setWindowFlags(Qt.FramelessWindowHint)
 		self.closebtn.clicked.connect(self.close)
@@ -40,30 +45,37 @@ class gui_interaction(QDialog, gui.Ui_main_window):
 		self.currentbtn.setText(data.tabHeadings[1])
 		self.prevbtn.setText(data.tabHeadings[0])
 		self.nextbtn.setText(data.tabHeadings[2])
-		self.items, index, tabnum = [], 0, 0
 		tabWidgets = [self.filenavlist, self.navnavlist, self.selnavlist, self.constraintlist, self.exportnavlist]
 		for tab in data.tabHeadings:
-			tabWidgets[tabnum].setSpacing(3)
-			for i in [i for i in data.btns[tabnum]]:
+			tabWidgets[self.tabnum].setSpacing(3)
+			for i in [i for i in data.btns[self.tabnum]]:
 				li = right_item.Item()
 				li.label.setText(i)
 				li.type.setText(tab)
-				listItem = QListWidgetItem(tabWidgets[tabnum])
+				listItem = QListWidgetItem(tabWidgets[self.tabnum])
 				listItem.setSizeHint(li.sizeHint())
-				li.addbtn.clicked.connect(lambda n=index: self.addToTaskList("nav", n))
-				tabWidgets[tabnum].addItem(listItem)
-				tabWidgets[tabnum].setItemWidget(listItem, li)
+				li.addbtn.clicked.connect(lambda n=self.index: self.newTask(n))
+				tabWidgets[self.tabnum].addItem(listItem)
+				tabWidgets[self.tabnum].setItemWidget(listItem, li)
 				self.items.append(li)
-				index += 1
-			tabnum += 1
-
+				self.index += 1
+			self.tabnum += 1
 		self.prevbtn.clicked.connect(self.prev)
 		self.nextbtn.clicked.connect(self.next)
 
-	def addToTaskList(self, type, i):
+	def newTask(self, i):
+		self.mp = d.getInfo([self.items[i].type.text(), self.items[i].label.text()])
+		if not self.mp.exec_():
+			self.addToTaskList(self.mp.retval())
+
+	def addToTaskList(self, i):
 		li = left_item.Item()
-		li.label.setText(self.items[i].label.text())
-		li.type.setText(type)
+		li.label.setText(data.btns[i[0][0]][i[0][1]])
+		li.type.setText(data.tabHeadings[i[0][0]])
+		text = "Description:\n"
+		for j in i:
+			text += (j[2] + " : " + j[3] + "\n")
+		li.desc.setText(text)
 		listItem = QListWidgetItem(self.tasklist)
 		listItem.setSizeHint(li.sizeHint())
 		self.tasklist.addItem(listItem)
@@ -71,7 +83,6 @@ class gui_interaction(QDialog, gui.Ui_main_window):
 
 	def next(self):
 		currentTabIndex = data.tabHeadings.index(self.currentbtn.text())
-		print currentTabIndex
 		self.stackedWidget.setCurrentIndex((self.stackedWidget.currentIndex() + 1) % 5)
 		self.currentbtn.setText(data.tabHeadings[(currentTabIndex + 1) % 5])
 		self.prevbtn.setText(data.tabHeadings[currentTabIndex])
