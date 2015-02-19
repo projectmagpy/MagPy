@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'new.ui'
 #
-# Created: Wed Feb 18 20:10:08 2015
+# Created: Thu Feb 19 06:57:07 2015
 #      by: pyside-uic 0.2.15 running on PySide 1.2.2
 #
 # WARNING! All changes made in this file will be lost!
@@ -1063,6 +1063,24 @@ class Ui_main_window(object):
         self.title_frame.setLineWidth(2)
         self.title_frame.setMidLineWidth(1)
         self.title_frame.setObjectName("title_frame")
+        self.horizontalLayout_4 = QtGui.QHBoxLayout(self.title_frame)
+        self.horizontalLayout_4.setSpacing(20)
+        self.horizontalLayout_4.setContentsMargins(20, 10, 20, 5)
+        self.horizontalLayout_4.setObjectName("horizontalLayout_4")
+        self.frame_5 = QtGui.QFrame(self.title_frame)
+        self.frame_5.setFrameShape(QtGui.QFrame.StyledPanel)
+        self.frame_5.setFrameShadow(QtGui.QFrame.Raised)
+        self.frame_5.setObjectName("frame_5")
+        self.horizontalLayout_4.addWidget(self.frame_5)
+        self.title_image = QtGui.QFrame(self.title_frame)
+        self.title_image.setAutoFillBackground(False)
+        self.title_image.setStyleSheet("border-image: url(:/images/title.png) 0 0 0 0 stretch stretch;")
+        self.title_image.setFrameShape(QtGui.QFrame.NoFrame)
+        self.title_image.setFrameShadow(QtGui.QFrame.Plain)
+        self.title_image.setObjectName("title_image")
+        self.horizontalLayout_4.addWidget(self.title_image)
+        self.horizontalLayout_4.setStretch(0, 3)
+        self.horizontalLayout_4.setStretch(1, 1)
         self.verticalLayout_2.addWidget(self.title_frame)
         self.center_frame = QtGui.QFrame(self.base_frame)
         self.center_frame.setStyleSheet("")
@@ -1392,3 +1410,4 @@ class Ui_main_window(object):
         self.nextbtn.setText(QtGui.QApplication.translate("main_window", "Selection", None, QtGui.QApplication.UnicodeUTF8))
         self.closebtn.setText(QtGui.QApplication.translate("main_window", "Close", None, QtGui.QApplication.UnicodeUTF8))
 
+import images_rc

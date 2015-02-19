@@ -3,7 +3,7 @@ from BeautifulSoup import BeautifulSoup
 
 
 class recursivenav():
-    def __init__(self, start, limit=0, possible_servers=[]):
+    def __init__(self, start, limit=200, possible_servers=[]):
         self.starturl = start
         self.links = [self.starturl]
         self.visited = []
@@ -12,11 +12,14 @@ class recursivenav():
         self.data = []
 
     def search(self, links=False):
-        if self.limit == 0:
-            self.limit = 100
+       # if self.limit == 0:
+        #    self.limit = 100
+
         while len(self.links) > 0 and len(self.visited)<self.limit:
             l = self.links[0]
-            print l
+            htmlfile = urllib.urlopen(l)
+            htmltext = htmlfile.read()
+            print htmltext
             self.links.pop(0)
             self.visited.append(l)
             try:
@@ -28,10 +31,12 @@ class recursivenav():
                         if ".".join(self.starturl.split(".")[-2:]) in a['href']:
                             if "http://" not in a['href']:
                                 link = urllib.basejoin(self.starturl, a['href'])
+
                                 if link not in (self.links, self.visited):
                                     self.links.append(link)
                             else:
                                 self.links.append(a['href'])
+
                 if self.limit > -1:
                     self.limit -= 1
             except:
@@ -45,6 +50,3 @@ class recursivenav():
 if __name__ == '__main__':
     r = recursivenav("http://www.thehindu.com")
     x = r.search()
-    for a in x:
-        print a
-    print len(x)

@@ -1,4 +1,5 @@
 from PySide.QtGui import *
+from PySide.QtCore import *
 import guidata as data
 
 
@@ -8,7 +9,14 @@ class getInfo(QDialog):
 		self.setModal(True)
 		self.inputs = []
 		self.item = item
+		self.setWindowTitle("Enter Data")
 		self.initUi()
+
+	def center(self):
+		qr = self.frameGeometry()
+		cp = QDesktopWidget().availableGeometry().center()
+		qr.moveCenter(cp)
+		self.move(qr.topLeft())
 
 	def initUi(self):
 		l = QFormLayout()
@@ -29,5 +37,9 @@ class getInfo(QDialog):
 			closebtn.clicked.connect(self.close)
 
 	def retval(self):
-		return [[self.type, self.task, i[0].text(), i[1].text()] for i in self.inputs]
+		res = [[self.type, self.task, i[0].text(), i[1].text()] for i in self.inputs]
+		for i in res:
+			if len(i[3]) == 0:
+				res.remove(i)
+		return res
 
