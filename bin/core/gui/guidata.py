@@ -16,7 +16,7 @@ inputs = [
         ["If not Based on Previous Keyword, enter Keyword", "URL"]
     ],
     [
-        ["Keyword", "Number of Results"],
+        ["Keyword", "Number of Results", "Extract text or just links"],
         ["URL"],
         ["URL " + str(i) for i in range(1, 10)],
         ["Base URL", "Type(text/num)", "Starting character", "Ending Character"],
