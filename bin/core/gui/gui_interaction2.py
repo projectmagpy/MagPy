@@ -5,6 +5,7 @@ import time, gui, right_item, left_item
 import guidata as data
 import infoDialogs as d
 from threading import Thread
+import log_controller as log
 
 
 class gui_interaction(QDialog, gui.Ui_main_window):
@@ -31,6 +32,7 @@ class gui_interaction(QDialog, gui.Ui_main_window):
 		self.setupUi(self)
 		# self.setWindowFlags(Qt.FramelessWindowHint)
 		self.closebtn.clicked.connect(self.close)
+		self.pause = False
 		self.th = Thread(target=self.looper)
 		self.th.start()
 		self.initUi()
@@ -45,6 +47,7 @@ class gui_interaction(QDialog, gui.Ui_main_window):
 
 	def initUi(self):
 		self.center()
+		self.statusbtn.clicked.connect(lambda: self.showDialog("log"))
 		self.updateSig.connect(self.updateUi)
 		self.stackedWidget.setCurrentIndex(1)
 		self.currentbtn.setText(data.tabHeadings[1])
@@ -69,9 +72,11 @@ class gui_interaction(QDialog, gui.Ui_main_window):
 		self.nextbtn.clicked.connect(self.next)
 
 	def newTask(self, i):
+		self.pause = True
 		self.mp = d.getInfo([self.items[i].type.text(), self.items[i].label.text()])
 		if not self.mp.exec_():
 			self.addToTaskList(self.mp.retval())
+		self.pause = False
 
 	def addToTaskList(self, i):
 		text = "Description:\n"
@@ -122,9 +127,15 @@ class gui_interaction(QDialog, gui.Ui_main_window):
 		if dir == "Down":
 			self.tasksAdded[itemNum], self.tasksAdded[itemNum+1] = self.tasksAdded[itemNum+1], self.tasksAdded[itemNum]
 
+	def showDialog(self, name):
+		self.pause = True
+		if name=="log":
+			self.lc = log.MyApp()
+			self.lc.show()
+		self.pause = False
 
 	def looper(self):
-		while True:
+		while not self.pause:
 			time.sleep(1)
 			self.updateSig.emit()
 

@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'new.ui'
 #
-# Created: Thu Feb 19 06:57:07 2015
+# Created: Sun Feb 22 19:00:34 2015
 #      by: pyside-uic 0.2.15 running on PySide 1.2.2
 #
 # WARNING! All changes made in this file will be lost!
@@ -1065,7 +1065,7 @@ class Ui_main_window(object):
         self.title_frame.setObjectName("title_frame")
         self.horizontalLayout_4 = QtGui.QHBoxLayout(self.title_frame)
         self.horizontalLayout_4.setSpacing(20)
-        self.horizontalLayout_4.setContentsMargins(20, 10, 20, 5)
+        self.horizontalLayout_4.setContentsMargins(300, 10, 30, 5)
         self.horizontalLayout_4.setObjectName("horizontalLayout_4")
         self.frame_5 = QtGui.QFrame(self.title_frame)
         self.frame_5.setFrameShape(QtGui.QFrame.StyledPanel)
@@ -1080,7 +1080,7 @@ class Ui_main_window(object):
         self.title_image.setObjectName("title_image")
         self.horizontalLayout_4.addWidget(self.title_image)
         self.horizontalLayout_4.setStretch(0, 3)
-        self.horizontalLayout_4.setStretch(1, 1)
+        self.horizontalLayout_4.setStretch(1, 2)
         self.verticalLayout_2.addWidget(self.title_frame)
         self.center_frame = QtGui.QFrame(self.base_frame)
         self.center_frame.setStyleSheet("")
@@ -1350,8 +1350,8 @@ class Ui_main_window(object):
         self.verticalLayout_5.setStretch(1, 1)
         self.horizontalLayout.addWidget(self.frame_3)
         self.horizontalLayout.setStretch(0, 1)
-        self.horizontalLayout.setStretch(1, 2)
-        self.horizontalLayout.setStretch(2, 3)
+        self.horizontalLayout.setStretch(1, 5)
+        self.horizontalLayout.setStretch(2, 5)
         self.verticalLayout_2.addWidget(self.center_frame)
         self.footer_frame = QtGui.QFrame(self.base_frame)
         self.footer_frame.setStyleSheet("background-color: rgb(86, 86, 86)")

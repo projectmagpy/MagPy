@@ -1094,18 +1094,18 @@ QStatusBar::item {
         <property name="midLineWidth">
          <number>1</number>
         </property>
-        <layout class="QHBoxLayout" name="horizontalLayout_4" stretch="3,1">
+        <layout class="QHBoxLayout" name="horizontalLayout_4" stretch="3,2">
          <property name="spacing">
           <number>20</number>
          </property>
          <property name="leftMargin">
-          <number>20</number>
+          <number>300</number>
          </property>
          <property name="topMargin">
           <number>10</number>
          </property>
          <property name="rightMargin">
-          <number>20</number>
+          <number>30</number>
          </property>
          <property name="bottomMargin">
           <number>5</number>
@@ -1153,7 +1153,7 @@ QStatusBar::item {
         <property name="lineWidth">
          <number>2</number>
         </property>
-        <layout class="QHBoxLayout" name="horizontalLayout" stretch="1,2,3">
+        <layout class="QHBoxLayout" name="horizontalLayout" stretch="1,5,5">
          <property name="spacing">
           <number>2</number>
          </property>
