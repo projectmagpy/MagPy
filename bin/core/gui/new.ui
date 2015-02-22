@@ -1153,7 +1153,7 @@ QStatusBar::item {
         <property name="lineWidth">
          <number>2</number>
         </property>
-        <layout class="QHBoxLayout" name="horizontalLayout" stretch="1,5,5">
+        <layout class="QHBoxLayout" name="horizontalLayout" stretch="1,7">
          <property name="spacing">
           <number>2</number>
          </property>
@@ -1387,119 +1387,44 @@ QStatusBar::item {
           </widget>
          </item>
          <item>
-          <widget class="QFrame" name="frame_2">
-           <property name="contextMenuPolicy">
-            <enum>Qt::NoContextMenu</enum>
+          <widget class="QStackedWidget" name="mainTabs">
+           <property name="currentIndex">
+            <number>0</number>
            </property>
-           <property name="styleSheet">
-            <string notr="true">background-color: rgb(117, 117, 117);</string>
-           </property>
-           <property name="frameShape">
-            <enum>QFrame::StyledPanel</enum>
-           </property>
-           <property name="frameShadow">
-            <enum>QFrame::Raised</enum>
-           </property>
-           <layout class="QVBoxLayout" name="verticalLayout_4">
-            <property name="spacing">
-             <number>3</number>
-            </property>
-            <property name="margin">
-             <number>2</number>
-            </property>
-            <item>
-             <widget class="QListWidget" name="tasklist">
-              <property name="cursor" stdset="0">
-               <cursorShape>PointingHandCursor</cursorShape>
-              </property>
-              <property name="frameShape">
-               <enum>QFrame::NoFrame</enum>
-              </property>
-              <property name="frameShadow">
-               <enum>QFrame::Plain</enum>
-              </property>
-              <property name="horizontalScrollBarPolicy">
-               <enum>Qt::ScrollBarAlwaysOff</enum>
-              </property>
-              <property name="tabKeyNavigation">
-               <bool>true</bool>
-              </property>
-              <property name="showDropIndicator" stdset="0">
-               <bool>false</bool>
-              </property>
-              <property name="alternatingRowColors">
-               <bool>true</bool>
-              </property>
-              <property name="isWrapping" stdset="0">
-               <bool>false</bool>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </widget>
-         </item>
-         <item>
-          <widget class="QFrame" name="frame_3">
-           <property name="contextMenuPolicy">
-            <enum>Qt::NoContextMenu</enum>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">background-color: rgb(117, 117, 117);</string>
-           </property>
-           <property name="frameShape">
-            <enum>QFrame::StyledPanel</enum>
-           </property>
-           <property name="frameShadow">
-            <enum>QFrame::Raised</enum>
-           </property>
-           <layout class="QVBoxLayout" name="verticalLayout_5" stretch="15,1">
-            <property name="spacing">
-             <number>1</number>
-            </property>
-            <property name="margin">
-             <number>1</number>
-            </property>
-            <item>
-             <widget class="QStackedWidget" name="stackedWidget">
-              <property name="currentIndex">
-               <number>3</number>
-              </property>
-              <widget class="QWidget" name="filetab">
-               <layout class="QVBoxLayout" name="verticalLayout_7">
+           <widget class="QWidget" name="MainUI">
+            <layout class="QHBoxLayout" name="horizontalLayout_5">
+             <property name="spacing">
+              <number>2</number>
+             </property>
+             <property name="margin">
+              <number>0</number>
+             </property>
+             <item>
+              <widget class="QFrame" name="frame_2">
+               <property name="contextMenuPolicy">
+                <enum>Qt::NoContextMenu</enum>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">background-color: rgb(117, 117, 117);</string>
+               </property>
+               <property name="frameShape">
+                <enum>QFrame::StyledPanel</enum>
+               </property>
+               <property name="frameShadow">
+                <enum>QFrame::Raised</enum>
+               </property>
+               <layout class="QVBoxLayout" name="verticalLayout_4">
                 <property name="spacing">
-                 <number>2</number>
+                 <number>3</number>
                 </property>
                 <property name="margin">
                  <number>2</number>
                 </property>
                 <item>
-                 <widget class="QListWidget" name="filenavlist"/>
-                </item>
-               </layout>
-              </widget>
-              <widget class="QWidget" name="navtab">
-               <layout class="QVBoxLayout" name="verticalLayout_8">
-                <property name="spacing">
-                 <number>2</number>
-                </property>
-                <property name="margin">
-                 <number>2</number>
-                </property>
-                <item>
-                 <widget class="QListWidget" name="navnavlist"/>
-                </item>
-               </layout>
-              </widget>
-              <widget class="QWidget" name="seltab">
-               <layout class="QVBoxLayout" name="verticalLayout_6">
-                <property name="spacing">
-                 <number>2</number>
-                </property>
-                <property name="margin">
-                 <number>2</number>
-                </property>
-                <item>
-                 <widget class="QListWidget" name="selnavlist">
+                 <widget class="QListWidget" name="tasklist">
+                  <property name="cursor" stdset="0">
+                   <cursorShape>PointingHandCursor</cursorShape>
+                  </property>
                   <property name="frameShape">
                    <enum>QFrame::NoFrame</enum>
                   </property>
@@ -1509,146 +1434,585 @@ QStatusBar::item {
                   <property name="horizontalScrollBarPolicy">
                    <enum>Qt::ScrollBarAlwaysOff</enum>
                   </property>
-                  <property name="autoScroll">
-                   <bool>false</bool>
+                  <property name="tabKeyNavigation">
+                   <bool>true</bool>
                   </property>
-                  <property name="autoScrollMargin">
-                   <number>9</number>
+                  <property name="showDropIndicator" stdset="0">
+                   <bool>false</bool>
                   </property>
                   <property name="alternatingRowColors">
                    <bool>true</bool>
                   </property>
-                  <property name="selectionBehavior">
-                   <enum>QAbstractItemView::SelectRows</enum>
-                  </property>
-                  <property name="movement">
-                   <enum>QListView::Free</enum>
-                  </property>
-                  <property name="resizeMode">
-                   <enum>QListView::Fixed</enum>
-                  </property>
-                  <property name="uniformItemSizes">
-                   <bool>true</bool>
-                  </property>
-                  <property name="selectionRectVisible">
-                   <bool>true</bool>
+                  <property name="isWrapping" stdset="0">
+                   <bool>false</bool>
                   </property>
                  </widget>
                 </item>
                </layout>
               </widget>
-              <widget class="QWidget" name="constraintstab">
-               <layout class="QVBoxLayout" name="verticalLayout_9">
+             </item>
+             <item>
+              <widget class="QFrame" name="frame_3">
+               <property name="contextMenuPolicy">
+                <enum>Qt::NoContextMenu</enum>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">background-color: rgb(117, 117, 117);</string>
+               </property>
+               <property name="frameShape">
+                <enum>QFrame::StyledPanel</enum>
+               </property>
+               <property name="frameShadow">
+                <enum>QFrame::Raised</enum>
+               </property>
+               <layout class="QVBoxLayout" name="verticalLayout_5" stretch="15,1">
                 <property name="spacing">
-                 <number>2</number>
+                 <number>1</number>
                 </property>
                 <property name="margin">
-                 <number>2</number>
+                 <number>1</number>
                 </property>
                 <item>
-                 <widget class="QListWidget" name="constraintlist"/>
+                 <widget class="QStackedWidget" name="stackedWidget">
+                  <property name="currentIndex">
+                   <number>3</number>
+                  </property>
+                  <widget class="QWidget" name="filetab">
+                   <layout class="QVBoxLayout" name="verticalLayout_7">
+                    <property name="spacing">
+                     <number>2</number>
+                    </property>
+                    <property name="margin">
+                     <number>2</number>
+                    </property>
+                    <item>
+                     <widget class="QListWidget" name="filenavlist"/>
+                    </item>
+                   </layout>
+                  </widget>
+                  <widget class="QWidget" name="navtab">
+                   <layout class="QVBoxLayout" name="verticalLayout_8">
+                    <property name="spacing">
+                     <number>2</number>
+                    </property>
+                    <property name="margin">
+                     <number>2</number>
+                    </property>
+                    <item>
+                     <widget class="QListWidget" name="navnavlist"/>
+                    </item>
+                   </layout>
+                  </widget>
+                  <widget class="QWidget" name="seltab">
+                   <layout class="QVBoxLayout" name="verticalLayout_6">
+                    <property name="spacing">
+                     <number>2</number>
+                    </property>
+                    <property name="margin">
+                     <number>2</number>
+                    </property>
+                    <item>
+                     <widget class="QListWidget" name="selnavlist">
+                      <property name="frameShape">
+                       <enum>QFrame::NoFrame</enum>
+                      </property>
+                      <property name="frameShadow">
+                       <enum>QFrame::Plain</enum>
+                      </property>
+                      <property name="horizontalScrollBarPolicy">
+                       <enum>Qt::ScrollBarAlwaysOff</enum>
+                      </property>
+                      <property name="autoScroll">
+                       <bool>false</bool>
+                      </property>
+                      <property name="autoScrollMargin">
+                       <number>9</number>
+                      </property>
+                      <property name="alternatingRowColors">
+                       <bool>true</bool>
+                      </property>
+                      <property name="selectionBehavior">
+                       <enum>QAbstractItemView::SelectRows</enum>
+                      </property>
+                      <property name="movement">
+                       <enum>QListView::Free</enum>
+                      </property>
+                      <property name="resizeMode">
+                       <enum>QListView::Fixed</enum>
+                      </property>
+                      <property name="uniformItemSizes">
+                       <bool>true</bool>
+                      </property>
+                      <property name="selectionRectVisible">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                  <widget class="QWidget" name="constraintstab">
+                   <layout class="QVBoxLayout" name="verticalLayout_9">
+                    <property name="spacing">
+                     <number>2</number>
+                    </property>
+                    <property name="margin">
+                     <number>2</number>
+                    </property>
+                    <item>
+                     <widget class="QListWidget" name="constraintlist"/>
+                    </item>
+                   </layout>
+                  </widget>
+                  <widget class="QWidget" name="exporttab">
+                   <layout class="QVBoxLayout" name="verticalLayout_10">
+                    <property name="spacing">
+                     <number>2</number>
+                    </property>
+                    <property name="margin">
+                     <number>2</number>
+                    </property>
+                    <item>
+                     <widget class="QListWidget" name="exportnavlist"/>
+                    </item>
+                   </layout>
+                  </widget>
+                 </widget>
                 </item>
-               </layout>
-              </widget>
-              <widget class="QWidget" name="exporttab">
-               <layout class="QVBoxLayout" name="verticalLayout_10">
-                <property name="spacing">
-                 <number>2</number>
-                </property>
-                <property name="margin">
-                 <number>2</number>
-                </property>
                 <item>
-                 <widget class="QListWidget" name="exportnavlist"/>
-                </item>
-               </layout>
-              </widget>
-             </widget>
-            </item>
-            <item>
-             <layout class="QHBoxLayout" name="horizontalLayout_3" stretch="5,5,5">
-              <property name="spacing">
-               <number>1</number>
-              </property>
-              <item>
-               <widget class="QPushButton" name="prevbtn">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="font">
-                 <font>
-                  <pointsize>11</pointsize>
-                 </font>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">background-color: rgb(86, 86, 86)</string>
-                </property>
-                <property name="text">
-                 <string>File Management</string>
-                </property>
-                <property name="flat">
-                 <bool>true</bool>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QPushButton" name="currentbtn">
-                <property name="enabled">
-                 <bool>false</bool>
-                </property>
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="font">
-                 <font>
-                  <pointsize>11</pointsize>
-                 </font>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">background-color: rgb(110, 110, 110);
+                 <layout class="QHBoxLayout" name="horizontalLayout_3" stretch="5,5,5">
+                  <property name="spacing">
+                   <number>1</number>
+                  </property>
+                  <item>
+                   <widget class="QPushButton" name="prevbtn">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <pointsize>11</pointsize>
+                     </font>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">background-color: rgb(86, 86, 86)</string>
+                    </property>
+                    <property name="text">
+                     <string>File Management</string>
+                    </property>
+                    <property name="flat">
+                     <bool>true</bool>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QPushButton" name="currentbtn">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <pointsize>11</pointsize>
+                     </font>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">background-color: rgb(110, 110, 110);
 color: rgb(224, 252, 255);</string>
+                    </property>
+                    <property name="text">
+                     <string>Navigation</string>
+                    </property>
+                    <property name="flat">
+                     <bool>true</bool>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QPushButton" name="nextbtn">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
+                    <property name="font">
+                     <font>
+                      <pointsize>11</pointsize>
+                     </font>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">background-color: rgb(86, 86, 86)</string>
+                    </property>
+                    <property name="text">
+                     <string>Selection</string>
+                    </property>
+                    <property name="flat">
+                     <bool>true</bool>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+               </layout>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+           <widget class="QWidget" name="StatusPage">
+            <layout class="QHBoxLayout" name="horizontalLayout_6" stretch="5,2">
+             <property name="spacing">
+              <number>2</number>
+             </property>
+             <property name="margin">
+              <number>0</number>
+             </property>
+             <item>
+              <widget class="QFrame" name="frame_6">
+               <property name="styleSheet">
+                <string notr="true">background-color: rgb(86, 86, 86)</string>
+               </property>
+               <property name="frameShape">
+                <enum>QFrame::StyledPanel</enum>
+               </property>
+               <property name="frameShadow">
+                <enum>QFrame::Raised</enum>
+               </property>
+               <layout class="QVBoxLayout" name="verticalLayout_12">
+                <property name="spacing">
+                 <number>2</number>
                 </property>
-                <property name="text">
-                 <string>Navigation</string>
+                <property name="margin">
+                 <number>0</number>
                 </property>
-                <property name="flat">
-                 <bool>true</bool>
+                <item>
+                 <widget class="QTextBrowser" name="console"/>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item>
+              <widget class="QFrame" name="frame_7">
+               <property name="styleSheet">
+                <string notr="true">background-color: rgb(86, 86, 86)</string>
+               </property>
+               <property name="frameShape">
+                <enum>QFrame::StyledPanel</enum>
+               </property>
+               <property name="frameShadow">
+                <enum>QFrame::Raised</enum>
+               </property>
+               <layout class="QVBoxLayout" name="verticalLayout_11">
+                <property name="spacing">
+                 <number>2</number>
                 </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QPushButton" name="nextbtn">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
+                <property name="margin">
+                 <number>0</number>
                 </property>
-                <property name="font">
-                 <font>
-                  <pointsize>11</pointsize>
-                 </font>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">background-color: rgb(86, 86, 86)</string>
-                </property>
-                <property name="text">
-                 <string>Selection</string>
-                </property>
-                <property name="flat">
-                 <bool>true</bool>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </item>
-           </layout>
+                <item>
+                 <widget class="QPushButton" name="clearbtn">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Minimum" vsizetype="MinimumExpanding">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>16</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>Clear Logs</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="savebtn">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Minimum" vsizetype="MinimumExpanding">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>16</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>Save Logs</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="backbtn">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Minimum" vsizetype="MinimumExpanding">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="font">
+                   <font>
+                    <pointsize>16</pointsize>
+                   </font>
+                  </property>
+                  <property name="text">
+                   <string>Back</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+           <widget class="QWidget" name="MyVault">
+            <layout class="QHBoxLayout" name="horizontalLayout_7">
+             <property name="spacing">
+              <number>2</number>
+             </property>
+             <property name="margin">
+              <number>0</number>
+             </property>
+             <item>
+              <layout class="QVBoxLayout" name="verticalLayout_13" stretch="3,5,1">
+               <property name="spacing">
+                <number>2</number>
+               </property>
+               <item>
+                <widget class="QFrame" name="frame_8">
+                 <property name="styleSheet">
+                  <string notr="true">background-color: rgb(86, 86, 86)</string>
+                 </property>
+                 <property name="frameShape">
+                  <enum>QFrame::StyledPanel</enum>
+                 </property>
+                 <property name="frameShadow">
+                  <enum>QFrame::Raised</enum>
+                 </property>
+                 <layout class="QVBoxLayout" name="verticalLayout_14">
+                  <item>
+                   <layout class="QGridLayout" name="gridLayout" columnstretch="1,1" columnminimumwidth="1,0">
+                    <item row="0" column="0">
+                     <widget class="QLabel" name="label_2">
+                      <property name="text">
+                       <string>Username</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="2" column="0">
+                     <widget class="QLabel" name="label">
+                      <property name="text">
+                       <string>Password</string>
+                      </property>
+                     </widget>
+                    </item>
+                    <item row="0" column="1">
+                     <widget class="QLineEdit" name="username"/>
+                    </item>
+                    <item row="2" column="1">
+                     <widget class="QLineEdit" name="password">
+                      <property name="echoMode">
+                       <enum>QLineEdit::Password</enum>
+                      </property>
+                      <property name="cursorMoveStyle">
+                       <enum>Qt::VisualMoveStyle</enum>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </item>
+                  <item>
+                   <widget class="QPushButton" name="pushButton">
+                    <property name="text">
+                     <string>Login</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item>
+                <widget class="QFrame" name="frame_11">
+                 <property name="styleSheet">
+                  <string notr="true">background-color: rgb(86, 86, 86)</string>
+                 </property>
+                 <property name="frameShape">
+                  <enum>QFrame::StyledPanel</enum>
+                 </property>
+                 <property name="frameShadow">
+                  <enum>QFrame::Raised</enum>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QFrame" name="frame_10">
+                 <property name="styleSheet">
+                  <string notr="true">background-color: rgb(86, 86, 86)</string>
+                 </property>
+                 <property name="frameShape">
+                  <enum>QFrame::StyledPanel</enum>
+                 </property>
+                 <property name="frameShadow">
+                  <enum>QFrame::Raised</enum>
+                 </property>
+                 <layout class="QHBoxLayout" name="horizontalLayout_9">
+                  <item>
+                   <widget class="QPushButton" name="pushButton_3">
+                    <property name="text">
+                     <string>PushButton</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QPushButton" name="pushButton_4">
+                    <property name="text">
+                     <string>PushButton</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QPushButton" name="pushButton_5">
+                    <property name="text">
+                     <string>PushButton</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <widget class="QFrame" name="frame_9">
+               <property name="styleSheet">
+                <string notr="true">background-color: rgb(86, 86, 86)</string>
+               </property>
+               <property name="frameShape">
+                <enum>QFrame::StyledPanel</enum>
+               </property>
+               <property name="frameShadow">
+                <enum>QFrame::Raised</enum>
+               </property>
+               <layout class="QHBoxLayout" name="horizontalLayout_8">
+                <item>
+                 <widget class="QTextBrowser" name="myvaultconsole"/>
+                </item>
+               </layout>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+           <widget class="QWidget" name="settings">
+            <layout class="QVBoxLayout" name="verticalLayout_15">
+             <property name="spacing">
+              <number>2</number>
+             </property>
+             <property name="margin">
+              <number>0</number>
+             </property>
+             <item>
+              <widget class="QFrame" name="frame_12">
+               <property name="styleSheet">
+                <string notr="true">background-color: rgb(86, 86, 86)</string>
+               </property>
+               <property name="frameShape">
+                <enum>QFrame::StyledPanel</enum>
+               </property>
+               <property name="frameShadow">
+                <enum>QFrame::Raised</enum>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+           <widget class="QWidget" name="help">
+            <layout class="QHBoxLayout" name="horizontalLayout_10">
+             <property name="spacing">
+              <number>2</number>
+             </property>
+             <property name="margin">
+              <number>0</number>
+             </property>
+             <item>
+              <widget class="QFrame" name="frame_13">
+               <property name="styleSheet">
+                <string notr="true">background-color: rgb(86, 86, 86)</string>
+               </property>
+               <property name="frameShape">
+                <enum>QFrame::StyledPanel</enum>
+               </property>
+               <property name="frameShadow">
+                <enum>QFrame::Raised</enum>
+               </property>
+               <layout class="QVBoxLayout" name="verticalLayout_17">
+                <item>
+                 <widget class="QLabel" name="label_3">
+                  <property name="text">
+                   <string>Help</string>
+                  </property>
+                  <property name="textFormat">
+                   <enum>Qt::PlainText</enum>
+                  </property>
+                  <property name="scaledContents">
+                   <bool>true</bool>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QTextBrowser" name="textBrowser"/>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item>
+              <widget class="QFrame" name="frame_14">
+               <property name="styleSheet">
+                <string notr="true">background-color: rgb(86, 86, 86)</string>
+               </property>
+               <property name="frameShape">
+                <enum>QFrame::StyledPanel</enum>
+               </property>
+               <property name="frameShadow">
+                <enum>QFrame::Raised</enum>
+               </property>
+               <layout class="QVBoxLayout" name="verticalLayout_16">
+                <item>
+                 <widget class="QLabel" name="label_4">
+                  <property name="text">
+                   <string>About</string>
+                  </property>
+                  <property name="textFormat">
+                   <enum>Qt::PlainText</enum>
+                  </property>
+                  <property name="scaledContents">
+                   <bool>true</bool>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QTextBrowser" name="textBrowser_2"/>
+                </item>
+               </layout>
+              </widget>
+             </item>
+            </layout>
+           </widget>
           </widget>
          </item>
         </layout>
@@ -1731,5 +2095,22 @@ color: rgb(224, 252, 255);</string>
  <resources>
   <include location="images.qrc"/>
  </resources>
- <connections/>
+ <connections>
+  <connection>
+   <sender>closebtn</sender>
+   <signal>clicked()</signal>
+   <receiver>main_window</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>839</x>
+     <y>565</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>663</x>
+     <y>-22</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>
