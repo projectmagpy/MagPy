@@ -63,5 +63,5 @@ class filemanager():
 
 
 if __name__ == '__main__':
-    fm = filemanager(url="https://ameliahennadesigner.wordpress.com/page/2/", type="img", size=-1, direct=False, format=['jpg', 'png'], limit=1)
+    fm = filemanager(url="http://en.wikipedia.org/wiki/World_War_II", type="img", size=-1, direct=False, format=['jpg', 'png'], limit=1)
    # mf =  filemanager(url = "http://www.renderx.com/demos/examples.html",type="a",size=-1,direct=False,format=['pdf'],limit=-1)

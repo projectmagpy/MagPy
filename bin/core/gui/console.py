@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'console_log.ui'
 #
-# Created: Sun Feb 22 19:00:34 2015
+# Created: Mon Feb 23 13:50:03 2015
 #      by: pyside-uic 0.2.15 running on PySide 1.2.2
 #
 # WARNING! All changes made in this file will be lost!
