@@ -1,11 +1,18 @@
-from sys import argv
-from PySide.QtGui import *
-from PySide.QtCore import *
-import time, gui, right_item, left_item
-import guidata as data
-import infoDialogs as d
+import sys
+import time
 from threading import Thread
 
+from PySide.QtGui import *
+from PySide.QtCore import *
+
+import gui
+import right_item
+import left_item
+import guidata as data
+
+import infoDialogs as d
+
+from ..main import tasks
 
 class gui_interaction(QDialog, gui.Ui_main_window):
 	"""
@@ -26,7 +33,7 @@ class gui_interaction(QDialog, gui.Ui_main_window):
 
 		self.tasksAdded = []
 		self.items, self.index, self.tabnum = [], 0, 0
-
+		self.currentMainTab = [0, 'main']
 		self.setupUi(self)
 		# self.setWindowFlags(Qt.FramelessWindowHint)
 		self.closebtn.clicked.connect(self.close)
@@ -55,6 +62,12 @@ class gui_interaction(QDialog, gui.Ui_main_window):
 		self.currentbtn.setText(data.tabHeadings[1])
 		self.prevbtn.setText(data.tabHeadings[0])
 		self.nextbtn.setText(data.tabHeadings[2])
+
+		# log page
+		self.savebtn.clicked.connect(self.savelog)
+		self.clearbtn.clicked.connect(self.clearlog)
+		self.backbtn.clicked.connect(self.start)
+
 		tabWidgets = [self.filenavlist, self.navnavlist, self.selnavlist, self.constraintlist, self.exportnavlist]
 		for tab in data.tabHeadings:
 			tabWidgets[self.tabnum].setSpacing(3)
@@ -76,23 +89,36 @@ class gui_interaction(QDialog, gui.Ui_main_window):
 
 	def start(self):
 		if self.mainTabs.currentIndex() == 0:
-			print "starting"
+			if len(self.tasksAdded) == 0:
+				self.msg = QMessageBox()
+				self.msg.setText("Unable to start, No Tasks added yet!!!")
+				self.msg.setWindowTitle("Error!!!")
+				self.msg.show()
+			else:
+				self.taskmanager = tasks.TaskManager(self.tasksAdded)
+				print self.tasksAdded
 		else:
 			self.ChangeTab("main")
 
 
 	def newTask(self, i):
-		self.pause = True
 		self.mp = d.getInfo([self.items[i].type.text(), self.items[i].label.text()])
-		if not self.mp.exec_():
+		if self.mp.num_ip == 0:
 			self.addToTaskList(self.mp.retval())
-		self.pause = False
+		elif not self.mp.exec_():
+			self.addToTaskList(self.mp.retval())
 
 	def addToTaskList(self, i):
-		text = "Description:\n"
-		for j in i:
-			text += (j[2] + " : " + j[3] + "\n")
-		self.tasksAdded.append([len(self.tasksAdded), data.tabHeadings[i[0][0]], data.btns[i[0][0]][i[0][1]], text])
+		if i:
+			if i[0][2] != "NULLTXT":
+				text = "Description:\n"
+				for j in i:
+					text += (j[2] + " : " + j[3] + "\n")
+				self.tasksAdded.append(
+					[len(self.tasksAdded), data.tabHeadings[i[0][0]], data.btns[i[0][0]][i[0][1]], text])
+			else:
+				self.tasksAdded.append(
+					[len(self.tasksAdded), data.tabHeadings[i[0][0]], data.btns[i[0][0]][i[0][1]], "No Description"])
 
 	def next(self):
 		currentTabIndex = data.tabHeadings.index(self.currentbtn.text())
@@ -110,21 +136,25 @@ class gui_interaction(QDialog, gui.Ui_main_window):
 
 
 	def updateUi(self):
-		self.tasklist.clear()
-		for task in self.tasksAdded:
-			li = left_item.Item()
-			li.label.setText(task[2])
-			li.type.setText(task[1])
-			li.desc.setText(task[3])
+		if self.currentMainTab[1] == 'main':
+			self.tasklist.clear()
+			for task in self.tasksAdded:
+				li = left_item.Item()
+				li.label.setText(task[2])
+				li.type.setText(task[1])
+				li.desc.setText(task[3])
 
-			li.itemCloseBtn.clicked.connect(lambda x=self.tasksAdded.index(task): self.removeItem(x))
-			li.itemUpBtn.clicked.connect(lambda x=self.tasksAdded.index(task): self.moveItem(x, "Up"))
-			li.itemDwnBtn.clicked.connect(lambda x=self.tasksAdded.index(task): self.moveItem(x, "Down"))
+				li.itemCloseBtn.clicked.connect(lambda x=self.tasksAdded.index(task): self.removeItem(x))
+				li.itemUpBtn.clicked.connect(lambda x=self.tasksAdded.index(task): self.moveItem(x, "Up"))
+				li.itemDwnBtn.clicked.connect(lambda x=self.tasksAdded.index(task): self.moveItem(x, "Down"))
 
-			listItem = QListWidgetItem(self.tasklist)
-			listItem.setSizeHint(li.sizeHint())
-			self.tasklist.addItem(listItem)
-			self.tasklist.setItemWidget(listItem, li)
+				listItem = QListWidgetItem(self.tasklist)
+				listItem.setSizeHint(li.sizeHint())
+				self.tasklist.addItem(listItem)
+				self.tasklist.setItemWidget(listItem, li)
+		elif self.currentMainTab[1] == 'log':
+			txt = open('../../logs/tasklog.txt').read()
+			self.console.setText(txt)
 
 
 	def removeItem(self, itemNum):
@@ -141,8 +171,9 @@ class gui_interaction(QDialog, gui.Ui_main_window):
 
 	def ChangeTab(self, name, sec=0):
 		tabNames = [self.MainUI, self.StatusPage, self.MyVault, self.SettingsPage, self.HelpPage]
-		tabfuncs = [0, self.status, self.myvault, self.settings, self.help]
-		if sec==0:
+		# tabfuncs = [0, self.status, self.myvault, self.settings, self.help]
+
+		if sec == 0:
 			self.mtabs = ['main', 'log', 'myvault', 'settings', 'help']
 			self.newTabName = name
 			self.anim()
@@ -151,16 +182,14 @@ class gui_interaction(QDialog, gui.Ui_main_window):
 			if self.mainTabs.currentIndex() == 0 and self.newTabName != "main":
 				self.startbtn.setText("Home")
 				self.mainTabs.setCurrentIndex(self.mtabs.index(self.newTabName))
-				tabfuncs[self.mtabs.index(self.newTabName)]()
 			elif self.mainTabs.currentIndex() == 0 and self.newTabName == "main":
 				self.mainTabs.setCurrentIndex(self.mtabs.index(self.newTabName))
 			elif self.newTabName == "main":
 				self.startbtn.setText("Start")
 				self.mainTabs.setCurrentIndex(self.mtabs.index(self.newTabName))
-			else:
-				self.mainTabs.setCurrentIndex(self.mtabs.index(self.newTabName))
-				tabfuncs[self.mtabs.index(self.newTabName)]()
 			self.restore()
+
+		self.currentMainTab = [self.mtabs.index(self.newTabName), self.newTabName]
 
 
 	def anim(self):
@@ -168,7 +197,8 @@ class gui_interaction(QDialog, gui.Ui_main_window):
 		self.hideAnimation = QPropertyAnimation(self.mainTabs, "geometry")
 		self.hideAnimation.setDuration(150)
 		self.mainTabs.startGeometry = QRect(self.mainTabs.geometry())
-		self.mainTabs.endGeometry = QRect(self.mainTabs.geometry().getRect()[0], self.mainTabs.geometry().getRect()[1], self.mainTabs.geometry().width(), 0)
+		self.mainTabs.endGeometry = QRect(self.mainTabs.geometry().getRect()[0], self.mainTabs.geometry().getRect()[1],
+										  self.mainTabs.geometry().width(), 0)
 		self.hideAnimation.setStartValue(self.mainTabs.startGeometry)
 		self.hideAnimation.setEndValue(self.mainTabs.endGeometry)
 		self.hideAnimation.start()
@@ -183,7 +213,8 @@ class gui_interaction(QDialog, gui.Ui_main_window):
 		self.hideAnimation1.setStartValue(self.mainTabs.startGeometry)
 		self.hideAnimation1.setEndValue(self.mainTabs.endGeometry)
 		self.hideAnimation1.start()
-		# self.hideAnimation1.finished.connect(lambda: self.ChangeTab("", sec=1))
+
+	# self.hideAnimation1.finished.connect(lambda: self.ChangeTab("", sec=1))
 
 
 
@@ -196,8 +227,13 @@ class gui_interaction(QDialog, gui.Ui_main_window):
 	def settings(self):
 		pass
 
-	def help(self):
-		pass
+	def savelog(self):
+		txt = open('../../logs/tasklog.txt').read()
+		open('C://savedlog.txt', 'w').write(txt)
+		open('../../logs/tasklog.txt', 'a').write("\n# Logs Saved to C://savedlog.txt")
+
+	def clearlog(self):
+		open('../../logs/tasklog.txt', 'w').write("\n# Logs Cleared")
 
 
 	def looper(self):
