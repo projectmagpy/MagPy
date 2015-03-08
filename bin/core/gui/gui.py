@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'new.ui'
 #
-# Created: Mon Feb 23 13:50:03 2015
+# Created: Sun Mar 08 10:50:33 2015
 #      by: pyside-uic 0.2.15 running on PySide 1.2.2
 #
 # WARNING! All changes made in this file will be lost!
@@ -1502,26 +1502,26 @@ class Ui_main_window(object):
         self.horizontalLayout_8.addWidget(self.myvaultconsole)
         self.horizontalLayout_7.addWidget(self.frame_9)
         self.mainTabs.addWidget(self.MyVault)
-        self.settings = QtGui.QWidget()
-        self.settings.setObjectName("settings")
-        self.verticalLayout_15 = QtGui.QVBoxLayout(self.settings)
+        self.SettingsPage = QtGui.QWidget()
+        self.SettingsPage.setObjectName("SettingsPage")
+        self.verticalLayout_15 = QtGui.QVBoxLayout(self.SettingsPage)
         self.verticalLayout_15.setSpacing(2)
         self.verticalLayout_15.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout_15.setObjectName("verticalLayout_15")
-        self.frame_12 = QtGui.QFrame(self.settings)
+        self.frame_12 = QtGui.QFrame(self.SettingsPage)
         self.frame_12.setStyleSheet("background-color: rgb(86, 86, 86)")
         self.frame_12.setFrameShape(QtGui.QFrame.StyledPanel)
         self.frame_12.setFrameShadow(QtGui.QFrame.Raised)
         self.frame_12.setObjectName("frame_12")
         self.verticalLayout_15.addWidget(self.frame_12)
-        self.mainTabs.addWidget(self.settings)
-        self.help = QtGui.QWidget()
-        self.help.setObjectName("help")
-        self.horizontalLayout_10 = QtGui.QHBoxLayout(self.help)
+        self.mainTabs.addWidget(self.SettingsPage)
+        self.HelpPage = QtGui.QWidget()
+        self.HelpPage.setObjectName("HelpPage")
+        self.horizontalLayout_10 = QtGui.QHBoxLayout(self.HelpPage)
         self.horizontalLayout_10.setSpacing(2)
         self.horizontalLayout_10.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout_10.setObjectName("horizontalLayout_10")
-        self.frame_13 = QtGui.QFrame(self.help)
+        self.frame_13 = QtGui.QFrame(self.HelpPage)
         self.frame_13.setStyleSheet("background-color: rgb(86, 86, 86)")
         self.frame_13.setFrameShape(QtGui.QFrame.StyledPanel)
         self.frame_13.setFrameShadow(QtGui.QFrame.Raised)
@@ -1538,7 +1538,7 @@ class Ui_main_window(object):
         self.textBrowser.setObjectName("textBrowser")
         self.verticalLayout_17.addWidget(self.textBrowser)
         self.horizontalLayout_10.addWidget(self.frame_13)
-        self.frame_14 = QtGui.QFrame(self.help)
+        self.frame_14 = QtGui.QFrame(self.HelpPage)
         self.frame_14.setStyleSheet("background-color: rgb(86, 86, 86)")
         self.frame_14.setFrameShape(QtGui.QFrame.StyledPanel)
         self.frame_14.setFrameShadow(QtGui.QFrame.Raised)
@@ -1555,7 +1555,7 @@ class Ui_main_window(object):
         self.textBrowser_2.setObjectName("textBrowser_2")
         self.verticalLayout_16.addWidget(self.textBrowser_2)
         self.horizontalLayout_10.addWidget(self.frame_14)
-        self.mainTabs.addWidget(self.help)
+        self.mainTabs.addWidget(self.HelpPage)
         self.horizontalLayout.addWidget(self.mainTabs)
         self.horizontalLayout.setStretch(0, 1)
         self.horizontalLayout.setStretch(1, 7)
@@ -1603,7 +1603,7 @@ class Ui_main_window(object):
 
         self.retranslateUi(main_window)
         self.mainTabs.setCurrentIndex(0)
-        self.stackedWidget.setCurrentIndex(3)
+        self.stackedWidget.setCurrentIndex(0)
         QtCore.QObject.connect(self.closebtn, QtCore.SIGNAL("clicked()"), main_window.close)
         QtCore.QMetaObject.connectSlotsByName(main_window)
 

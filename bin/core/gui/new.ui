@@ -1475,7 +1475,7 @@ QStatusBar::item {
                 <item>
                  <widget class="QStackedWidget" name="stackedWidget">
                   <property name="currentIndex">
-                   <number>3</number>
+                   <number>0</number>
                   </property>
                   <widget class="QWidget" name="filetab">
                    <layout class="QVBoxLayout" name="verticalLayout_7">
@@ -1912,7 +1912,7 @@ color: rgb(224, 252, 255);</string>
              </item>
             </layout>
            </widget>
-           <widget class="QWidget" name="settings">
+           <widget class="QWidget" name="SettingsPage">
             <layout class="QVBoxLayout" name="verticalLayout_15">
              <property name="spacing">
               <number>2</number>
@@ -1935,7 +1935,7 @@ color: rgb(224, 252, 255);</string>
              </item>
             </layout>
            </widget>
-           <widget class="QWidget" name="help">
+           <widget class="QWidget" name="HelpPage">
             <layout class="QHBoxLayout" name="horizontalLayout_10">
              <property name="spacing">
               <number>2</number>
