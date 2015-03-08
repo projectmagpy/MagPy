@@ -37,7 +37,7 @@
      <property name="frameShadow">
       <enum>QFrame::Plain</enum>
      </property>
-     <layout class="QVBoxLayout" name="verticalLayout_2" stretch="5,10,30">
+     <layout class="QVBoxLayout" name="verticalLayout_2" stretch="500,1,2000">
       <property name="spacing">
        <number>0</number>
       </property>
@@ -87,21 +87,6 @@
          <property name="margin">
           <number>5</number>
          </property>
-         <item>
-          <widget class="QLabel" name="label">
-           <property name="font">
-            <font>
-             <pointsize>12</pointsize>
-            </font>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">color: rgb(255, 255, 255);</string>
-           </property>
-           <property name="text">
-            <string>TextLabel</string>
-           </property>
-          </widget>
-         </item>
         </layout>
        </widget>
       </item>
@@ -118,6 +103,21 @@ color: rgb(224, 252, 255);</string>
          <enum>QFrame::Raised</enum>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_3">
+         <item>
+          <widget class="QLabel" name="label">
+           <property name="font">
+            <font>
+             <pointsize>12</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">color: rgb(255, 255, 255);</string>
+           </property>
+           <property name="text">
+            <string>TextLabel</string>
+           </property>
+          </widget>
+         </item>
          <item>
           <widget class="QLabel" name="desc">
            <property name="text">
@@ -139,7 +139,7 @@ color: rgb(224, 252, 255);</string>
      <property name="frameShadow">
       <enum>QFrame::Plain</enum>
      </property>
-     <layout class="QGridLayout" name="gridLayout">
+     <layout class="QGridLayout">
       <property name="margin">
        <number>0</number>
       </property>
