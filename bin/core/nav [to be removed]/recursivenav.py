@@ -49,4 +49,4 @@ class recursivenav():
 
 if __name__ == '__main__':
     r = recursivenav("http://www.thehindu.com")
-    x = r.search()
+    print r.search()
