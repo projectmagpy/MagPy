@@ -1,2 +1,98 @@
 
-# Logs Saved to C://savedlog.txt
+# Logs Cleared
+
+**************
+NEW TASKS ADDED
+**************
+Existing data removed
+TASK[0]: Task Initiated
+TASK[0]: Starting Search
+
+
+**************
+NEW TASKS ADDED
+**************
+Existing data removed
+TASK[0]: Task Initiated
+
+
+**************
+NEW TASKS ADDED
+**************
+Existing data removed
+TASK[0]: Task Initiated
+TASK[0]: Starting Search
+
+
+**************
+NEW TASKS ADDED
+**************
+Existing data removed
+TASK[0]: Task Initiated
+TASK[0]: Starting Search
+Error Collecting data from http://accent-office-password-recovery-cse-beta.software.informer.com/ 
+Error Collecting data from http://accent-office-password-recovery-cse-beta.software.informer.com/1.0b/ 
+
+
+**************
+NEW TASKS ADDED
+**************
+Existing data removed
+
+
+**************
+NEW TASKS ADDED
+**************
+Existing data removed
+TASK[0]: Task Initiated
+TASK[0]: Starting Search
+Error Collecting data from https://www.linkedin.com/pub/dsfgdf-dfgdfgsgf/6/631/469 
+Error Collecting data from http://in.linkedin.com/pub/dsfgdf-fgsdfg/b/a7b/28b 
+
+
+**************
+NEW TASKS ADDED
+**************
+Existing data removed
+TASK[0]: Task Initiated
+TASK[0]: Starting Search
+
+
+**************
+NEW TASKS ADDED
+**************
+Existing data removed
+TASK[0]: Task Initiated
+TASK[0]: Starting Search
+Error Collecting data from http://accent-office-password-recovery-cse-beta.software.informer.com/ 
+Error Collecting data from http://accent-office-password-recovery-cse-beta.software.informer.com/1.0b/ 
+
+
+**************
+NEW TASKS ADDED
+**************
+Existing data removed
+TASK[0]: Task Initiated
+TASK[0]: Starting Search
+
+
+**************
+NEW TASKS ADDED
+**************
+Existing data removed
+TASK[0]: Task Initiated
+TASK[0]: Starting Search
+
+
+**************
+NEW TASKS ADDED
+**************
+Existing data removed
+TASK[0]: Task Initiated
+TASK[0]: Starting Search
+TASK[0]: Search Completed, [3] results
+
+
+**************
+NEW TASKS ADDED
+**************

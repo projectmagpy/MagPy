@@ -1,6 +1,5 @@
 import mechanize, HTMLParser, urllib2, urllib, requests
 from BeautifulSoup import BeautifulSoup
-from multiprocessing import Process, Manager
 
 
 class basicnav():
@@ -112,7 +111,6 @@ class SearchEngine():
 			item = a.find('a')
 			link = item['href']
 			results.append([heading, link])
-		print results
 		return results
 
 
@@ -168,25 +166,14 @@ class SearchEngine():
 				if f == 0:
 					self.uniquelinks.append(i)
 			if links:
-				return self.uniquelinks
+				yield self.uniquelinks
 			else:  # [[link, data], [link, data] ...]
-				mg = Manager()
-				ret = mg.dict()
-				jobs = []
-				n = 0
-				for li in self.uniquelinks[0:3]:
-					p = Process(target=self.data_collector, args=(n, li[1], ret))
-					n += 1
-					jobs.append(p)
-					p.start()
-
-				for proc in jobs:
-					proc.join()
-				print ret.values()
-				print len(ret.values())
+				for li in self.uniquelinks:
+					yield [li[1], self.data_collector(li[1])]
 
 
-	def data_collector(self, n, url, ret):
+
+	def data_collector(self, url):
 		"""
 		Gets the HTML data from the page specified by the URL.
 		:param url: url from which data is to be retrieved.
@@ -194,10 +181,9 @@ class SearchEngine():
 		"""
 		try:
 			html = urllib2.urlopen(url).read()
-			soup = BeautifulSoup(html)
-			ret[n] = [soup.title.string, url, html[0:100]]
+			return html
 		except:
-			ret[n] = ["Error", url, "Error"]
+			pass
 
 
 	def video_link_collector(self, count):

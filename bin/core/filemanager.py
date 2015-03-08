@@ -5,7 +5,7 @@ import urlparse
 from urllib import urlretrieve
 
 
-class filemanager():
+class FileManager():
     def __init__(self, url, type, limit, size, format, direct):
         self.url = url
         self.type = type
@@ -16,7 +16,7 @@ class filemanager():
         if self.type == "img":
             self.manageimages()
 
-    def manageimages(self):
+    def DownloadImages(self):
         out_folder = "images/"
 
         if self.direct:
@@ -36,7 +36,7 @@ class filemanager():
                 except:
                     pass
 
-    def managefiles(self):
+    def DownloadFiles(self):
         out_folder = "files/"
 
         if self.direct:
