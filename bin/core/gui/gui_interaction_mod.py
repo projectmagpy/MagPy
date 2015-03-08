@@ -1,4 +1,4 @@
-import sys
+from sys import argv, path
 import time
 from threading import Thread
 
@@ -12,7 +12,9 @@ import guidata as data
 
 import infoDialogs as d
 
-from ..main import tasks
+path.append("..")
+import tasks
+
 
 class gui_interaction(QDialog, gui.Ui_main_window):
 	"""
@@ -31,6 +33,7 @@ class gui_interaction(QDialog, gui.Ui_main_window):
 	def __init__(self):
 		super(gui_interaction, self).__init__()
 
+		self.tasks_display_list = []
 		self.tasksAdded = []
 		self.items, self.index, self.tabnum = [], 0, 0
 		self.currentMainTab = [0, 'main']
@@ -89,13 +92,13 @@ class gui_interaction(QDialog, gui.Ui_main_window):
 
 	def start(self):
 		if self.mainTabs.currentIndex() == 0:
-			if len(self.tasksAdded) == 0:
+			if len(self.tasks_display_list) == 0:
 				self.msg = QMessageBox()
 				self.msg.setText("Unable to start, No Tasks added yet!!!")
 				self.msg.setWindowTitle("Error!!!")
 				self.msg.show()
 			else:
-				self.taskmanager = tasks.TaskManager(self.tasksAdded)
+				self.taskmanager = tasks.TaskManager(self.tasks_display_list)
 				print self.tasksAdded
 		else:
 			self.ChangeTab("main")
@@ -110,15 +113,20 @@ class gui_interaction(QDialog, gui.Ui_main_window):
 
 	def addToTaskList(self, i):
 		if i:
+			temp = []
 			if i[0][2] != "NULLTXT":
 				text = "Description:\n"
 				for j in i:
 					text += (j[2] + " : " + j[3] + "\n")
+					temp.append([j[2], j[3]])
+				self.tasks_display_list.append(
+					[len(self.tasks_display_list), data.tabHeadings[i[0][0]], data.btns[i[0][0]][i[0][1]], text])
 				self.tasksAdded.append(
-					[len(self.tasksAdded), data.tabHeadings[i[0][0]], data.btns[i[0][0]][i[0][1]], text])
+					[len(self.tasksAdded), i[0][0], i[0][1], data.tabHeadings[i[0][0]], data.btns[i[0][0]][i[0][1]], temp])
 			else:
-				self.tasksAdded.append(
-					[len(self.tasksAdded), data.tabHeadings[i[0][0]], data.btns[i[0][0]][i[0][1]], "No Description"])
+				self.tasks_display_list.append(
+					[len(self.tasks_display_list), data.tabHeadings[i[0][0]], data.btns[i[0][0]][i[0][1]],
+					 "No Description"])
 
 	def next(self):
 		currentTabIndex = data.tabHeadings.index(self.currentbtn.text())
@@ -138,15 +146,15 @@ class gui_interaction(QDialog, gui.Ui_main_window):
 	def updateUi(self):
 		if self.currentMainTab[1] == 'main':
 			self.tasklist.clear()
-			for task in self.tasksAdded:
+			for task in self.tasks_display_list:
 				li = left_item.Item()
 				li.label.setText(task[2])
 				li.type.setText(task[1])
 				li.desc.setText(task[3])
 
-				li.itemCloseBtn.clicked.connect(lambda x=self.tasksAdded.index(task): self.removeItem(x))
-				li.itemUpBtn.clicked.connect(lambda x=self.tasksAdded.index(task): self.moveItem(x, "Up"))
-				li.itemDwnBtn.clicked.connect(lambda x=self.tasksAdded.index(task): self.moveItem(x, "Down"))
+				li.itemCloseBtn.clicked.connect(lambda x=self.tasks_display_list.index(task): self.removeItem(x))
+				li.itemUpBtn.clicked.connect(lambda x=self.tasks_display_list.index(task): self.moveItem(x, "Up"))
+				li.itemDwnBtn.clicked.connect(lambda x=self.tasks_display_list.index(task): self.moveItem(x, "Down"))
 
 				listItem = QListWidgetItem(self.tasklist)
 				listItem.setSizeHint(li.sizeHint())
@@ -158,16 +166,20 @@ class gui_interaction(QDialog, gui.Ui_main_window):
 
 
 	def removeItem(self, itemNum):
-		self.tasksAdded.pop(itemNum)
+		self.tasks_display_list.pop(itemNum)
 
 
 	def moveItem(self, itemNum, dir):
 		if dir == "Up":
-			self.tasksAdded[itemNum], self.tasksAdded[itemNum - 1] = self.tasksAdded[itemNum - 1], self.tasksAdded[
-				itemNum]
+			self.tasks_display_list[itemNum], self.tasks_display_list[itemNum - 1] = self.tasks_display_list[
+																						 itemNum - 1], \
+																					 self.tasks_display_list[
+																						 itemNum]
 		if dir == "Down":
-			self.tasksAdded[itemNum], self.tasksAdded[itemNum + 1] = self.tasksAdded[itemNum + 1], self.tasksAdded[
-				itemNum]
+			self.tasks_display_list[itemNum], self.tasks_display_list[itemNum + 1] = self.tasks_display_list[
+																						 itemNum + 1], \
+																					 self.tasks_display_list[
+																						 itemNum]
 
 	def ChangeTab(self, name, sec=0):
 		tabNames = [self.MainUI, self.StatusPage, self.MyVault, self.SettingsPage, self.HelpPage]

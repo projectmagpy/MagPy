@@ -9,7 +9,7 @@ class TaskManager():
 		if os.path.exists("taskdb.db"):
 			os.remove("taskdb.db")
 		self.conn = sqlite3.connect("taskdb.db", isolation_level=None)
-		self.conn.execute('CREATE table TASKS (task number, task_row number, task_column number, status text)')
+		self.conn.execute('CREATE table TASKS (task number, task_row number, task_column number, task_class text, task_name text, status text)')
 		self.conn.execute('CREATE table INPUTS (task number, ipnum number, link text, html text)')
 		self.conn.execute('CREATE table RESULTS (task number, link text, html text)')
 		for i in self.tasklist:
