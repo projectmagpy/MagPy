@@ -1,4 +1,4 @@
-import navmanger as n
+import navmanager as n
 import sqlite3
 import urllib
 import os
@@ -13,9 +13,9 @@ def create():
     return conn
 
 def createTasksDB():
-    if os.path.exists("tasks.db"):
-        os.remove("tasks.db")
-    conn = sqlite3.connect("tasks.db", isolation_level=None)
+    if os.path.exists("tasks2.db"):
+        os.remove("tasks2.db")
+    conn = sqlite3.connect("tasks2.db", isolation_level=None)
     c = conn.cursor()
     c.execute('CREATE table RESULT (link VARCHAR2, html VARCHAR2)')
     return conn
@@ -27,5 +27,5 @@ if __name__=='__main__':
     #data = n.basicnav().listnav(["http://wikipedia.org", "http://www.marutisuzuki.com/swift.aspx"])
     #for url in urls:
     #    print url
-    c.execute('INSERT INTO RESULT (link, html) VALUES ('http://wikipedia.org', 1)')
+    c.execute('INSERT INTO RESULT (link, html) VALUES ("http://wikipedia.org", 1)')
     conn.close()
