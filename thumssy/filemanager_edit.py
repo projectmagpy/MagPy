@@ -4,7 +4,6 @@ from urllib2 import urlopen
 import urlparse
 from urllib import urlretrieve
 
-
 class filemanager():
     def __init__(self, url, type, limit, size, format, direct):
         self.url = url
@@ -63,5 +62,5 @@ class filemanager():
 
 
 if __name__ == '__main__':
-    fm = filemanager(url="http://en.wikipedia.org/wiki/World_War_II", type="img", size=-1, direct=False, format=['jpg', 'png'], limit=1)
-   # mf =  filemanager(url = "http://www.renderx.com/demos/examples.html",type="a",size=-1,direct=False,format=['pdf'],limit=-1)
+    fm = filemanager(url="http://en.wikipedia.org/wiki/Apple", type="img", size=-1, direct=False, format=['jpg', 'png'], limit=1)
+    mf =  filemanager(url = "http://www.renderx.com/demos/examples.html",type="a",size=-1,direct=False,format=['pdf'],limit=-1)

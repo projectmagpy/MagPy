@@ -15,8 +15,6 @@ class filemanager():
         self.direct = direct
         if self.type == "img":
             self.manageimages()
-        if self.type == "a":
-            self.managefiles()
 
     def manageimages(self):
         out_folder = "images/"
@@ -37,7 +35,7 @@ class filemanager():
                         urlretrieve(urlparse.urljoin(self.url, image["src"]), outpath)
                 except:
                     pass
-        print "Successfully saved images!!!!! "
+
     def managefiles(self):
         out_folder = "files/"
 
@@ -59,9 +57,7 @@ class filemanager():
                             urlretrieve(urlparse.urljoin(self.url, a['href']), outpath)
                     except:
                         pass
-        print "Files saved successfully!!!!!"
 
 
 if __name__ == '__main__':
-   # fm = filemanager(url="http://en.wikipedia.org/wiki/Apple", type="img", size=-1, direct=False, format=['jpg', 'png'], limit=1)
-    mf =  filemanager(url = "http://www.renderx.com/demos/examples.html",type="a",size=-1,direct=False,format=['pdf'],limit=-1)
+    fm = filemanager(url="http://en.wikipedia.org/wiki/Apple", type="img", size=-1, direct=False, format=['jpg', 'png'], limit=1)

@@ -1,7 +1,6 @@
 import requests
 from BeautifulSoup import BeautifulSoup
 
-
 def translate(text, langid=0):
     langs = ["hi", "ml",  "ru","ar","ur"]
     if langid != -1:

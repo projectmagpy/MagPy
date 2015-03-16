@@ -31,7 +31,7 @@ try:
 				try:
 					r=requests.get("http://127.0.0.1/tiny/"+username+"/links.txt")
 					url=r.content
-					
+
 					fo=open("temp.txt","r+");
 					temp=fo.read();
 					fo.close();
@@ -46,7 +46,7 @@ try:
 				except:
 					print "waiting !!"
 					invoker()
-					
+
 			def downloadVideo(url, ptype='mp4', audio=False, silent=False):
 				video = pafy.new(url)
 				if audio:

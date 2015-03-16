@@ -36,23 +36,45 @@ class TaskManager():
 		for task in self.tasklist:
 			self.updateStatus(task[0], "Task Initiated")
 			if task[1] == 1:  # Navigation
-				if task[2] == 0:  # Search Engine
-					self.updateStatus(task[0], "Starting Search")
-					n = self.searchengine(task)
-					self.updateStatus(task[0], "Search Completed, [" + str(n) + "] results")
+				self.updateStatus(task[0], "Navigation Initialised")
+				self.navmgr(task)
+			if task[1] == 2:  # Selection
+				self.updateStatus(task[0], "Selecting Data")
+				self.select(task)
+			if task[1] == 3:  # Constraints
+				self.updateStatus(task[0], "Applying Constraints to Data")
+				self.constrain(task)
+			if task[1] == 4:  # Export
+				self.updateStatus(task[0], "Exporting Data")
+				self.export(task)
+			if task[1] == 0:  # File
+				self.updateStatus(task[0], "Retrieving files")
+				self.file(task)
 			break
 
+	def select(self, task):
+		pass
 
-	def searchengine(self, task):
-		res = self.conn.execute('SELECT inplabel, value FROM INPUTS WHERE task=?', (task[0],))
-		keyword, num, links = "", 1, False
-		for i in res:
-			if "Key" in i[0]:
-				keyword = i[1]
-			if "Num" in i[0]:
-				num = i[1]
-			if "links" in i[0]:
-				links = True
+	def constrain(self, task):
+		pass
+
+	def export(self, task):
+		pass
+
+	def file(self, task):
+		pass
+
+	def navmgr(self, task):
+		if task[2] == 0:
+			res = self.conn.execute('SELECT inplabel, value FROM INPUTS WHERE task=?', (task[0],))
+			keyword, num, links = "", 1, False
+			for i in res:
+				if "Key" in i[0]:
+					keyword = i[1]
+				if "Num" in i[0]:
+					num = i[1]
+				if "links" in i[0]:
+					links = True
 			search = SearchEngine(keyword, num)
 			res = search.search(links)
 			n = 0
@@ -66,7 +88,31 @@ class TaskManager():
 						break
 				except:
 					open(self.logfilename, "a").write("Error Collecting data from " + i[0] + " \n")
-			return n
+			self.updateStatus(task[0], "Search Completed, [" + str(n) + "] results")
+		elif task[2] == 1:  # single
+			res = self.conn.execute('SELECT inplabel, value FROM INPUTS WHERE task=?', (task[0],))
+			data = basicnav().single(res[1])
+			self.conn.execute("INSERT INTO RESULTS VALUES (?, ?, ?)",
+										  (task[0], data[0], unicode(data[1], 'utf-8', errors='replace')))
+			self.updateStatus(task[0], "Data Obtained from url[s]")
+
+		elif task[2] == 2:  # multi url
+			res = self.conn.execute('SELECT inplabel, value FROM INPUTS WHERE task=?', (task[0],))
+			for i in res:
+				data = basicnav().single(i[1])
+				self.conn.execute("INSERT INTO RESULTS VALUES (?, ?, ?)",
+											  (task[0], data[0], unicode(data[1], 'utf-8', errors='replace')))
+			self.updateStatus(task[0], "Data Obtained from url[s]")
+
+		elif task[2] == 3:  # iterative  url
+			res = self.conn.execute('SELECT inplabel, value FROM INPUTS WHERE task=?', (task[0],))
+			for i in res:
+				data = basicnav().single(i[1])
+				self.conn.execute("INSERT INTO RESULTS VALUES (?, ?, ?)",
+											  (task[0], data[0], unicode(data[1], 'utf-8', errors='replace')))
+			self.updateStatus(task[0], "Data Obtained from url[s]")
+
+
 
 
 	def updateStatus(self, tasknum, status):
