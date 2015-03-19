@@ -27,4 +27,4 @@ class nav():
 
 if __name__ == '__main__':
    print nav().listnav(["http://wikipedia.org","http://www.marutisuzuki.com/swift.aspx"])
-  # print nav().iterativenav(url = "http://forum.xda-developers.com/showthread.php?t=779%d1",type = 'num',start = 100,stop = 103)
+   print nav().iterativenav(url = "http://forum.xda-developers.com/showthread.php?t=779%d1",type = 'num',start = 100,stop = 103)

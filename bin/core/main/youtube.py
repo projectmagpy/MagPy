@@ -30,3 +30,7 @@ class youtube():
                 best.download(quiet=silent, filepath="../../files")
             except:
                 print "Error:skipping"
+
+
+if __name__ == '__main__':
+    y = youtube().downloadPlaylist("https://www.youtube.com/playlist?list=PL6gx4Cwl9DGChV7XQAqGqy0tFkD3BuwIU")

@@ -184,6 +184,10 @@ class gui_interaction(QDialog, gui.Ui_main_window):
                 self.tasklist.addItem(listItem)
                 self.tasklist.setItemWidget(listItem, li)
 
+        elif self.currentMainTab[1]  == 'myvault':
+            txt = open('../../logs/mvlog.txt').read()
+            self.myvaultconsole.setText(txt)
+
         elif self.currentMainTab[1] == 'log':
             txt = open('../../logs/tasklog.txt').read()
             self.console.setText(txt)
@@ -201,9 +205,9 @@ class gui_interaction(QDialog, gui.Ui_main_window):
             txt = urllib.urlopen(url).read()
             li = BeautifulSoup(txt).text.replace("Hosting24 Analytics CodeEnd Of Analytics Code", "").split("\n")
             if len(li[0]) > 0:
-                self.myvaultconsole.append(time.asctime() + ": Found " + str(len(li)) + " link(s)")
+                open("../../logs/mvlog.txt", "a").write("\n" + time.asctime() + ": Found " + str(len(li)) + " link(s)")
                 for i in li:
-                    self.myvaultconsole.append(time.asctime() + ": Starting download of " + i)
+                    open("../../logs/mvlog.txt", "a").write("\n" + time.asctime() + ": Starting download of " + i)
                     if "youtube.com" in i:
                         if 'watch?' in i:
                             self.v = youtube.youtube()
@@ -215,7 +219,7 @@ class gui_interaction(QDialog, gui.Ui_main_window):
                         if not os.path.isdir("../../files"):
                             os.mkdir("../../files")
                         urllib.urlretrieve(i, "../../files/" + i.split("/")[-1])
-                    self.myvaultconsole.append(time.asctime() + ": Finished download of " + i)
+                    open("../../logs/mvlog.txt", "a").write("\n" + time.asctime() + ": Finished download of " + i)
 
 
     def myvaultlogin(self, logout):
