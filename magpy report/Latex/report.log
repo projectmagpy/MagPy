@@ -1,0 +1,405 @@
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9) (preloaded format=pdflatex 2015.2.2)  19 MAR 2015 15:01
+entering extended mode
+**report.tex
+("C:\Users\admin\Dropbox\_ProjectMagPy\magpy report\Latex\report.tex"
+LaTeX2e <2011/06/27>
+Babel <v3.8m> and hyphenation patterns for english, afrikaans, ancientgreek, ar
+abic, armenian, assamese, basque, bengali, bokmal, bulgarian, catalan, coptic, 
+croatian, czech, danish, dutch, esperanto, estonian, farsi, finnish, french, ga
+lician, german, german-x-2013-05-26, greek, gujarati, hindi, hungarian, iceland
+ic, indonesian, interlingua, irish, italian, kannada, kurmanji, latin, latvian,
+ lithuanian, malayalam, marathi, mongolian, mongolianlmc, monogreek, ngerman, n
+german-x-2013-05-26, nynorsk, oriya, panjabi, pinyin, polish, portuguese, roman
+ian, russian, sanskrit, serbian, slovak, slovenian, spanish, swedish, swissgerm
+an, tamil, telugu, turkish, turkmen, ukenglish, ukrainian, uppersorbian, usengl
+ishmax, welsh, loaded.
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\report.cls"
+Document Class: report 2007/10/19 v1.4h Standard LaTeX document class
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\size10.clo"
+File: size10.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@chapter=\count80
+\c@section=\count81
+\c@subsection=\count82
+\c@subsubsection=\count83
+\c@paragraph=\count84
+\c@subparagraph=\count85
+\c@figure=\count86
+\c@table=\count87
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphicx.sty"
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\keyval.sty"
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
+\KV@toks@=\toks14
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphics.sty"
+Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\trig.sty"
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\00miktex\graphics.cfg"
+File: graphics.cfg 2007/01/18 v1.5 graphics configuration of teTeX/TeXLive
+)
+Package graphics Info: Driver file: pdftex.def on input line 91.
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\pdftex-def\pdftex.def"
+File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
+
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\infwarerr.sty"
+Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
+)
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ltxcmds.sty"
+Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
+)
+\Gread@gobject=\count88
+))
+\Gin@req@height=\dimen103
+\Gin@req@width=\dimen104
+)
+("C:\Users\admin\Dropbox\_ProjectMagPy\magpy report\Latex\report.aux")
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 7.
+LaTeX Font Info:    ... okay on input line 7.
+
+("C:\Program Files\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count89
+\scratchdimen=\dimen105
+\scratchbox=\box26
+\nofMPsegments=\count90
+\nofMParguments=\count91
+\everyMPshowfont=\toks15
+\MPscratchCnt=\count92
+\MPscratchDim=\dimen106
+\MPnumerator=\count93
+\makeMPintoPDFobject=\count94
+\everyMPtoPDFconversion=\toks16
+) <logo.png, id=1, 240.9pt x 261.6174pt>
+File: logo.png Graphic file (type png)
+ <use logo.png>
+Package pdftex.def Info: logo.png used on input line 15.
+(pdftex.def)             Requested size: 142.26378pt x 154.50061pt.
+ [1
+
+{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map} <C:/Users/admin/Dropbox/_P
+rojectMagPy/magpy report/Latex/logo.png>] <Logo.png, id=8, 240.9pt x 261.6174pt
+>
+File: Logo.png Graphic file (type png)
+ <use Logo.png>
+Package pdftex.def Info: Logo.png used on input line 38.
+(pdftex.def)             Requested size: 142.26378pt x 154.50061pt.
+
+Overfull \hbox (1.78247pt too wide) in paragraph at lines 42--51
+\OT1/cmr/m/it/12 Uni-ver-sity Reg-is-ter Num-bers  \OT1/cmr/bx/it/12 11012351,1
+1012367,11012380  \OT1/cmr/m/it/12 of
+ []
+
+
+Overfull \hbox (10.24863pt too wide) in paragraph at lines 42--51
+\OT1/cmr/m/it/12 branch  \OT1/cmr/bx/it/12 Com-puter Sci-ence and En-gi-neer-in
+g  \OT1/cmr/m/it/12 dur-ing the semester
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 42--51
+
+ []
+
+[2 <C:/Users/admin/Dropbox/_ProjectMagPy/magpy report/Latex/Logo.png>]
+
+LaTeX Font Warning: Font shape `OT1/cmr/bx/n' in size <16.28> not available
+(Font)              size <17.28> substituted on input line 58.
+
+Missing character: There is no ‚ in font cmr12!
+Missing character: There is no Ä in font cmr12!
+Missing character: There is no ú in font cmr12!
+Missing character: There is no ‚ in font cmr12!
+Missing character: There is no Ä in font cmr12!
+Missing character: There is no ù in font cmr12!
+[2]
+Missing character: There is no ‚ in font cmr12!
+Missing character: There is no Ä in font cmr12!
+Missing character: There is no ô in font cmr12!
+ [3] ("C:\Users\admin\Dropbox\_ProjectMagPy\magpy report\Latex\report.toc"
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 10.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 10.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 10.
+
+[4
+
+])
+\tf@toc=\write3
+ [5]
+ 1.
+[1
+
+]
+Missing character: There is no ‚ in font cmr12!
+Missing character: There is no Ä in font cmr12!
+Missing character: There is no ú in font cmr12!
+Missing character: There is no ‚ in font cmr12!
+Missing character: There is no Ä in font cmr12!
+Missing character: There is no ù in font cmr12!
+ <1.png, id=33, 1028.34187pt x 578.16pt>
+File: 1.png Graphic file (type png)
+ <use 1.png>
+Package pdftex.def Info: 1.png used on input line 111.
+(pdftex.def)             Requested size: 361.34999pt x 203.16183pt.
+
+Overfull \hbox (16.34999pt too wide) in paragraph at lines 109--113
+[]
+ []
+
+[2]
+Missing character: There is no ‚ in font cmr12!
+Missing character: There is no Ä in font cmr12!
+Missing character: There is no ô in font cmr12!
+Missing character: There is no ‚ in font cmr12!
+Missing character: There is no Ä in font cmr12!
+Missing character: There is no ú in font cmr12!
+Missing character: There is no ‚ in font cmr12!
+Missing character: There is no Ä in font cmr12!
+Missing character: There is no ù in font cmr12!
+ <2.png, id=37, 796.47563pt x 460.72125pt>
+File: 2.png Graphic file (type png)
+ <use 2.png>
+Package pdftex.def Info: 2.png used on input line 117.
+(pdftex.def)             Requested size: 361.34999pt x 209.02391pt.
+
+Overfull \hbox (16.34999pt too wide) in paragraph at lines 115--119
+[]
+ []
+
+[3 <C:/Users/admin/Dropbox/_ProjectMagPy/magpy report/Latex/1.png>]
+Missing character: There is no ‚ in font cmr12!
+Missing character: There is no Ä in font cmr12!
+Missing character: There is no ú in font cmr12!
+Missing character: There is no ‚ in font cmr12!
+Missing character: There is no Ä in font cmr12!
+Missing character: There is no ù in font cmr12!
+
+<3.png, id=41, 753.5653pt x 444.15938pt>
+File: 3.png Graphic file (type png)
+ <use 3.png>
+Package pdftex.def Info: 3.png used on input line 123.
+(pdftex.def)             Requested size: 361.34999pt x 212.97719pt.
+
+Overfull \hbox (31.34999pt too wide) in paragraph at lines 123--125
+[][]
+ []
+
+[4 <C:/Users/admin/Dropbox/_ProjectMagPy/magpy report/Latex/2.png>] [5 <C:/User
+s/admin/Dropbox/_ProjectMagPy/magpy report/Latex/3.png>]
+Missing character: There is no ‚ in font cmr12!
+Missing character: There is no Ä in font cmr12!
+Missing character: There is no ô in font cmr12!
+ [6]
+<agile1.png, id=51, 539.01375pt x 383.18156pt>
+File: agile1.png Graphic file (type png)
+ <use agile1.png>
+Package pdftex.def Info: agile1.png used on input line 154.
+(pdftex.def)             Requested size: 361.34999pt x 256.88232pt.
+
+Overfull \hbox (31.34999pt too wide) in paragraph at lines 154--156
+[][]
+ []
+
+[7] [8 <C:/Users/admin/Dropbox/_ProjectMagPy/magpy report/Latex/agile1.png>]
+ 2.
+[9
+
+]
+Missing character: There is no ‚ in font cmr12!
+Missing character: There is no Ä in font cmr12!
+Missing character: There is no ú in font cmr12!
+Missing character: There is no ‚ in font cmr12!
+Missing character: There is no Ä in font cmr12!
+Missing character: There is no ù in font cmr12!
+ [10] [11]
+Missing character: There is no ‚ in font cmr12!
+Missing character: There is no Ä in font cmr12!
+Missing character: There is no ú in font cmr12!
+Missing character: There is no ‚ in font cmr12!
+Missing character: There is no Ä in font cmr12!
+Missing character: There is no ù in font cmr12!
+ [12]
+ 3.
+[13
+
+]
+ 4.
+Missing character: There is no ‚ in font cmr12!
+Missing character: There is no Ä in font cmr12!
+Missing character: There is no ô in font cmr12!
+[14
+
+] [15] [16] [17] <architecture.png, id=88, 428.35031pt x 253.69781pt>
+File: architecture.png Graphic file (type png)
+
+<use architecture.png>
+Package pdftex.def Info: architecture.png used on input line 261.
+(pdftex.def)             Requested size: 433.62pt x 256.82117pt.
+
+Overfull \hbox (88.62pt too wide) in paragraph at lines 261--263
+ [] 
+ []
+
+<SearchActivity.png, id=89, 457.71pt x 699.61375pt>
+File: SearchActivity.png Graphic file (type png)
+ <use SearchActivity.png>
+Package pdftex.def Info: SearchActivity.png used on input line 269.
+(pdftex.def)             Requested size: 361.34999pt x 552.3472pt.
+
+Overfull \hbox (16.34999pt too wide) in paragraph at lines 269--270
+ [] 
+ []
+
+[18 <C:/Users/admin/Dropbox/_ProjectMagPy/magpy report/Latex/architecture.png>]
+[19 <C:/Users/admin/Dropbox/_ProjectMagPy/magpy report/Latex/SearchActivity.png
+>]
+Missing character: There is no ‚ in font cmr12!
+Missing character: There is no Ä in font cmr12!
+Missing character: There is no ú in font cmr12!
+Missing character: There is no ‚ in font cmr12!
+Missing character: There is no Ä in font cmr12!
+Missing character: There is no ù in font cmr12!
+Missing character: There is no ‚ in font cmr12!
+Missing character: There is no Ä in font cmr12!
+Missing character: There is no ú in font cmr12!
+Missing character: There is no ‚ in font cmr12!
+Missing character: There is no Ä in font cmr12!
+Missing character: There is no ù in font cmr12!
+Missing character: There is no ‚ in font cmr12!
+Missing character: There is no Ä in font cmr12!
+Missing character: There is no ú in font cmr12!
+Missing character: There is no ‚ in font cmr12!
+Missing character: There is no Ä in font cmr12!
+Missing character: There is no ù in font cmr12!
+Missing character: There is no ‚ in font cmr12!
+Missing character: There is no Ä in font cmr12!
+Missing character: There is no ú in font cmr12!
+Missing character: There is no ‚ in font cmr12!
+Missing character: There is no Ä in font cmr12!
+Missing character: There is no ù in font cmr12!
+Missing character: There is no ‚ in font cmr12!
+Missing character: There is no Ä in font cmr12!
+Missing character: There is no ú in font cmr12!
+Missing character: There is no ‚ in font cmr12!
+Missing character: There is no Ä in font cmr12!
+Missing character: There is no ù in font cmr12!
+Missing character: There is no ‚ in font cmr12!
+Missing character: There is no Ä in font cmr12!
+Missing character: There is no ú in font cmr12!
+Missing character: There is no ‚ in font cmr12!
+Missing character: There is no Ä in font cmr12!
+Missing character: There is no ù in font cmr12!
+ <watchdfd.png, id=99, 392.21532pt x 377.15906pt>
+File: watchdfd.png Graphic file (type png)
+ <use watchdfd.png>
+Package pdftex.def Info: watchdfd.png used on input line 277.
+(pdftex.def)             Requested size: 361.34999pt x 347.49698pt.
+
+Overfull \hbox (16.34999pt too wide) in paragraph at lines 277--278
+ [] 
+ []
+
+Missing character: There is no ‚ in font cmr12!
+Missing character: There is no Ä in font cmr12!
+Missing character: There is no ú in font cmr12!
+Missing character: There is no ‚ in font cmr12!
+Missing character: There is no Ä in font cmr12!
+Missing character: There is no ù in font cmr12!
+Missing character: There is no ‚ in font cmr12!
+Missing character: There is no Ä in font cmr12!
+Missing character: There is no ô in font cmr12!
+<MyVault_Activity.png, id=100, 353.32pt x 779.91376pt>
+File: MyVault_Activity.png Graphic file (type png)
+
+<use MyVault_Activity.png>
+Package pdftex.def Info: MyVault_Activity.png used on input line 290.
+(pdftex.def)             Requested size: 289.07999pt x 638.11728pt.
+
+
+LaTeX Warning: Float too large for page by 40.11728pt on input line 291.
+
+[20 <C:/Users/admin/Dropbox/_ProjectMagPy/magpy report/Latex/watchdfd.png>]
+[21] [22 <C:/Users/admin/Dropbox/_ProjectMagPy/magpy report/Latex/MyVault_Activ
+ity.png>]
+ 5.
+[23
+
+]
+ 6.
+[24
+
+]
+ 7.
+[25
+
+]
+ 8.
+[26
+
+]
+ 9.
+[27
+
+]
+ 10.
+[28
+
+]
+ 11.
+[29
+
+]
+ 12.
+[30
+
+] ("C:\Users\admin\Dropbox\_ProjectMagPy\magpy report\Latex\report.aux")
+
+LaTeX Font Warning: Size substitutions with differences
+(Font)              up to 1.0pt have occurred.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 1210 strings out of 493921
+ 16096 string characters out of 3147283
+ 67306 words of memory out of 3000000
+ 4531 multiletter control sequences out of 15000+200000
+ 10120 words of font info for 35 fonts, out of 3000000 for 9000
+ 841 hyphenation exceptions out of 8191
+ 27i,5n,19p,1258b,263s stack positions out of 5000i,500n,10000p,200000b,50000s
+<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Pr
+ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Fi
+les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbxti10.pfb><C:/Program Files/Mi
+KTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/
+fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/typ
+e1/public/amsfonts/cm/cmr17.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public
+/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfont
+s/cm/cmti12.pfb>
+Output written on report.pdf (36 pages, 952942 bytes).
+PDF statistics:
+ 162 PDF objects out of 1000 (max. 8388607)
+ 0 named destinations out of 1000 (max. 500000)
+ 51 words of extra memory for PDF output out of 10000 (max. 10000000)
+
