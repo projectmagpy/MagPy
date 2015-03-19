@@ -1,6 +1,0 @@
-gui
-
-guiinteraction.py
-core folder
-navmanager
-myvault folder
