@@ -14,7 +14,7 @@ class TaskManager():
         if os.path.exists("taskdb.db"):
             os.remove("taskdb.db")
             open(self.logfilename, "a").write("Existing data removed\n")
-        self.conn = sqlite3.connect("taskdb2.db", isolation_level=None)
+        self.conn = sqlite3.connect("taskdb.db", isolation_level=None)
         self.conn.execute(
             'CREATE TABLE TASKS (task number, task_row number, task_column number, task_class TEXT, task_name TEXT, status TEXT)')
         self.conn.execute('CREATE TABLE INPUTS (task number, ipnum number, inplabel TEXT, value TEXT)')
@@ -84,8 +84,8 @@ class TaskManager():
                     self.conn.execute("INSERT INTO RESULTS VALUES (?, ?, ?)",
                                       (task[0], i[0], unicode(i[1], 'utf-8', errors='replace')))
                     n += 1
-                    if n > 2:
-                        break
+                    # if n > 2:
+                    #     break
                 except:
                     open(self.logfilename, "a").write("Error Collecting data from " + i[0] + " \n")
             self.updateStatus(task[0], "Search Completed, [" + str(n) + "] results")

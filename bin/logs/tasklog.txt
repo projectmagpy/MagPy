@@ -4,3 +4,73 @@
 **************
 NEW TASKS ADDED
 **************
+
+
+**************
+NEW TASKS ADDED
+**************
+
+
+**************
+NEW TASKS ADDED
+**************
+TASK[0]: Task Initiated
+TASK[0]: Navigation Initialised
+TASK[0]: Search Completed, [3] results
+
+
+**************
+NEW TASKS ADDED
+**************
+TASK[0]: Task Initiated
+TASK[0]: Navigation Initialised
+TASK[0]: Search Completed, [3] results
+
+
+**************
+NEW TASKS ADDED
+**************
+Existing data removed
+TASK[0]: Task Initiated
+TASK[0]: Navigation Initialised
+TASK[0]: Search Completed, [3] results
+
+
+**************
+NEW TASKS ADDED
+**************
+Existing data removed
+TASK[0]: Task Initiated
+TASK[0]: Navigation Initialised
+
+
+**************
+NEW TASKS ADDED
+**************
+Existing data removed
+TASK[0]: Task Initiated
+TASK[0]: Navigation Initialised
+
+
+**************
+NEW TASKS ADDED
+**************
+Existing data removed
+TASK[0]: Task Initiated
+TASK[0]: Navigation Initialised
+
+
+**************
+NEW TASKS ADDED
+**************
+Existing data removed
+TASK[0]: Task Initiated
+TASK[0]: Navigation Initialised
+
+
+**************
+NEW TASKS ADDED
+**************
+Existing data removed
+TASK[0]: Task Initiated
+TASK[0]: Navigation Initialised
