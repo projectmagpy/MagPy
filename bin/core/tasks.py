@@ -20,6 +20,7 @@ class TaskManager():
             'CREATE TABLE TASKS (task number, task_row number, task_column number, task_class TEXT, task_name TEXT, status TEXT)')
         self.conn.execute('CREATE TABLE INPUTS (task number, ipnum number, inplabel TEXT, value TEXT)')
         self.conn.execute('CREATE TABLE RESULTS (task number, link TEXT, html TEXT)')
+
         rows_for_tasks = []
         rows_for_inputs = []
         for i in self.tasklist:
@@ -34,27 +35,37 @@ class TaskManager():
         self.startAction()
 
     def startAction(self):
-        task = self.tasklist[0]
-        self.tnum = 0
-        self.updateStatus(task[0], "Task Initiated")
-        if task[1] == 1:  # Navigation
-            self.updateStatus(task[0], "Navigation Initialised")
-            self.navmgr(task)
-        if task[1] == 2:  # Selection
-            self.updateStatus(task[0], "Selecting Data")
-            self.select(task)
-        if task[1] == 3:  # Constraints
-            self.updateStatus(task[0], "Applying Constraints to Data")
-            self.constrain(task)
-        if task[1] == 4:  # Export
-            self.updateStatus(task[0], "Exporting Data")
-            self.export(task)
-        if task[1] == 0:  # File
-            self.updateStatus(task[0], "Retrieving files")
-            self.file(task)
+        self.funcs = [self.file, self.navmgr, self.select, self.constrain, self.export]
+        self.updateStatus(self.tasklist[0][0], "Task Initiated")
+        self.funcs[self.tasklist[0][1]](0)
 
-    def select(self, task):
-        pass
+    def select(self, tnum):
+        task = self.tasklist[tnum]
+        if task[2] == 0:  # HTML attributes
+            tres = self.conn.execute("SELECT ipnum, value from INPUTS WHERE task=?", (tnum,))
+            ips = ["", "", ""]
+            res = [list(i) for i in tres]
+            for i in res:
+               ips[i[0]] = i[1]
+
+            html = self.conn.execute("SELECT html from RESULTS WHERE task=?", (tnum-1,))
+            b = BeautifulSoup(html)
+            if ips[2] != "":
+                r1 = b.find(ips[0], attrs={"id": ips[2]})
+            else:
+                r1 = " :: ".join(b.findAll(ips[0]))
+
+            self.conn.execute("INSERT INTO RESULTS VALUES (?, ?, ?)", (tnum, " ", unicode(r1, errors="ignore")))
+
+        if task[2] == 3:  # From Text
+            pass
+        if task[2] == 4:  # Regular Expressions
+            pass
+
+        self.updateStatus(self.tasklist[tnum][0], "Task Completed")
+        self.updateStatus(self.tasklist[tnum+1][0], "Task Initiated")
+        self.funcs[self.tasklist[tnum+1][1]](tnum+1)
+
 
     def constrain(self, task):
         pass
@@ -62,17 +73,81 @@ class TaskManager():
     def export(self, task):
         pass
 
-    def file(self, task):
-        pass
-
-    def navmgr(self, task):
-
-
+    def file(self, tnum):
+        task = self.tasklist[tnum]
+        if task[2] == 0:  # text
+            tres = self.conn.execute("SELECT ipnum, value from INPUTS WHERE task=?", (tnum,))
+            ips = [""]
+            res = [list(i) for i in tres]
             for i in res:
-                data = basicnav().single(i[1])
-                self.conn.execute("INSERT INTO RESULTS VALUES (?, ?, ?)",
-                                  (task[0], data[0], unicode(data[1], 'utf-8', errors='replace')))
-            self.updateStatus(task[0], "Data Obtained from url[s]")
+               ips[i[0]] = i[1]
+
+            data = ""
+            if len(i) == 0:
+                html = self.conn.execute("SELECT html from RESULTS WHERE task=?", (tnum-1,))
+                b = BeautifulSoup(html)
+                data = b.text
+            else:
+                data = requests.get(ips[0]).text
+            open(constants.textop, "w").write(data)
+
+        if task[2] == 1:  # images
+            pass
+        if task[2] == 2:  # videos
+            pass
+        if task[2] == 3:  # files
+            pass
+        if task[2] == 4:  # html
+            pass
+
+        self.updateStatus(self.tasklist[tnum][0], "Task Completed")
+        self.updateStatus(self.tasklist[tnum+1][0], "Task Initiated")
+        self.funcs[self.tasklist[tnum+1][1]](tnum+1)
+
+    def navmgr(self, tnum):
+        task = self.tasklist[tnum]
+        if task[2] == 0:  # Search Engine
+            tres = self.conn.execute("SELECT ipnum, value from INPUTS WHERE task=?", (tnum,))
+            ips = ["none", "1", "text"]
+            res = [list(i) for i in tres]
+            for i in res:
+               ips[i[0]] = i[1]
+            s = SearchEngine(keyword=ips[0], pages=int(ips[1]), type=ips[2])
+            for i in s.search(False):
+                self.conn.execute("INSERT INTO RESULTS VALUES (?, ?, ?)", (tnum, i[0], unicode(i[1], errors="ignore")))
+
+        if task[2] == 1 or task[2] == 2:  # Single and multi
+            tres = self.conn.execute("SELECT ipnum, value from INPUTS WHERE task=?", (tnum,))
+            ips = []
+            res = [list(i) for i in tres]
+            for i in res:
+               ips.append(i[1])
+            for i in ips:
+                self.conn.execute("INSERT INTO RESULTS VALUES (?, ?, ?)", (tnum, i, unicode(urllib.urlopen(i), errors="ignore")))
+
+        if task[2] == 3:  # Iterative
+            tres = self.conn.execute("SELECT ipnum, value from INPUTS WHERE task=?", (tnum,))
+            ips = ["http://google.com", "num", "0", "10"]
+            res = [list(i) for i in tres]
+            for i in res:
+               ips[i[0]] = i[1]
+            for i in basicnav().iterativenav(i[0], i[1], i[2], i[3]):
+                self.conn.execute("INSERT INTO RESULTS VALUES (?, ?, ?)", (tnum, i[0], unicode(i[1], errors="ignore")))
+
+        if task[2] == 4:  # Recursive
+            tres = self.conn.execute("SELECT ipnum, value from INPUTS WHERE task=?", (tnum,))
+            ips = ["http://google.com", "10", ""]
+            res = [list(i) for i in tres]
+            for i in res:
+               ips[i[0]] = i[1]
+            r = recursivenav(i[0], i[1], i[2])
+            for i in r.search():
+                self.conn.execute("INSERT INTO RESULTS VALUES (?, ?, ?)", (tnum, i[0], unicode(i[1], errors="ignore")))
+
+
+        self.updateStatus(self.tasklist[tnum][0], "Task Completed")
+        self.updateStatus(self.tasklist[tnum+1][0], "Task Initiated")
+        self.funcs[self.tasklist[tnum+1][1]](tnum+1)
 
 
     def updateStatus(self, tasknum, status):

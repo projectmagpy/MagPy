@@ -120,7 +120,9 @@ class gui_interaction(QDialog, gui.Ui_main_window):
                 self.msg.setWindowTitle("Error!!!")
                 self.msg.show()
             else:
-                tasks.TaskManager(self.tasksAdded)
+                self.taskth = Thread(target=tasks.TaskManager, args=(self.tasksAdded,))
+                self.taskth.setDaemon(True)
+                self.taskth.start()
         else:
             self.ChangeTab("main")
 

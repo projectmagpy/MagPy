@@ -213,12 +213,12 @@ class SearchEngine():
 
 
 class recursivenav():
-    def __init__(self, start, limit=200, possible_servers=[]):
+    def __init__(self, start, limit=200, possible_servers=""):
         self.starturl = start
         self.links = [self.starturl]
         self.visited = []
-        self.limit = limit
-        self.servers = possible_servers
+        self.limit = int(limit)
+        self.servers = possible_servers.split(",")
         self.data = []
 
     def search(self, links=False):
@@ -258,6 +258,7 @@ class recursivenav():
 
 
 if __name__ == '__main__':
-    print SearchEngine("hello world", pages=1).search(links=True)
-    print basicnav().listnav(["http://wikipedia.org", "http://www.marutisuzuki.com/swift.aspx"])
-    print recursivenav("http://www.thehindu.com").search()
+    for i in SearchEngine("hello world", pages=1).search(links=False):
+        print i
+    # print basicnav().listnav(["http://wikipedia.org", "http://www.marutisuzuki.com/swift.aspx"])
+    # print recursivenav("http://www.thehindu.com").search()

@@ -17,10 +17,11 @@
     <SUITE FILE_PATH="coverage/MagPy$final_image.coverage" NAME="final_image Coverage Results" MODIFIED="1423732419168" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/thumssy" />
     <SUITE FILE_PATH="coverage/MagPy$translator__1_.coverage" NAME="translator (1) Coverage Results" MODIFIED="1423128082095" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/bin/core/main" />
     <SUITE FILE_PATH="coverage/MagPy$start.coverage" NAME="start Coverage Results" MODIFIED="1423470894124" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$USER_HOME$/YT/dev" />
-    <SUITE FILE_PATH="coverage/MagPy$gui_interaction__1_.coverage" NAME="gui_interaction (1) Coverage Results" MODIFIED="1427439481237" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/bin/core" />
+    <SUITE FILE_PATH="coverage/MagPy$gui_interaction__1_.coverage" NAME="gui_interaction (1) Coverage Results" MODIFIED="1427454243826" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/bin/core" />
     <SUITE FILE_PATH="coverage/MagPy$youtube.coverage" NAME="youtube Coverage Results" MODIFIED="1426451008471" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/bin/core/main" />
     <SUITE FILE_PATH="coverage/MagPy$trial.coverage" NAME="trial Coverage Results" MODIFIED="1426466961736" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/bin/core" />
     <SUITE FILE_PATH="coverage/MagPy$gui_interaction.coverage" NAME="gui_interaction Coverage Results" MODIFIED="1426452697585" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/bin/core/gui" />
+    <SUITE FILE_PATH="coverage/MagPy$navmanager.coverage" NAME="navmanager Coverage Results" MODIFIED="1427453658450" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/bin/core" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
@@ -61,18 +62,50 @@
       <file leaf-file-name="tasks.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/bin/core/tasks.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.962818" vertical-offset="968" max-vertical-offset="1683">
-              <caret line="28" column="26" selection-start-line="28" selection-start-column="26" selection-end-line="28" selection-end-column="26" />
+            <state vertical-scroll-proportion="0.50097847" vertical-offset="1291" max-vertical-offset="2958">
+              <caret line="91" column="51" selection-start-line="91" selection-start-column="51" selection-end-line="91" selection-end-column="51" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
-                <marker date="1427439479692" expanded="true" signature="686:801" placeholder="CREATE TABLE..TASKS..." />
-                <marker date="1427439479692" expanded="true" signature="831:905" placeholder="CREATE TABLE..INPUTS..." />
-                <marker date="1427439479692" expanded="true" signature="935:991" placeholder="CREATE TABLE..RESULTS..." />
-                <marker date="1427439479692" expanded="true" signature="1343:1381" placeholder="INSERT INTO ..." />
-                <marker date="1427439479692" expanded="true" signature="1431:1466" placeholder="INSERT INTO ..." />
-                <marker date="1427439479692" expanded="true" signature="2601:2637" placeholder="INSERT INTO ..." />
-                <marker date="1427439479692" expanded="true" signature="2881:2919" placeholder="UPDATE TASKS..." />
+                <marker date="1427472296077" expanded="true" signature="686:801" placeholder="CREATE TABLE..TASKS..." />
+                <marker date="1427472296077" expanded="true" signature="831:905" placeholder="CREATE TABLE..INPUTS..." />
+                <marker date="1427472296077" expanded="true" signature="935:991" placeholder="CREATE TABLE..RESULTS..." />
+                <marker date="1427472296077" expanded="true" signature="1344:1382" placeholder="INSERT INTO ..." />
+                <marker date="1427472296077" expanded="true" signature="1432:1467" placeholder="INSERT INTO ..." />
+                <marker date="1427472296077" expanded="true" signature="1884:1928" placeholder="SELECT ipnum..INPUTS..." />
+                <marker date="1427472296077" expanded="true" signature="2110:2147" placeholder="SELECT html ..RESULTS..." />
+                <marker date="1427472296077" expanded="true" signature="2386:2422" placeholder="INSERT INTO ..." />
+                <marker date="1427472296077" expanded="true" signature="3002:3046" placeholder="SELECT ipnum..INPUTS..." />
+                <marker date="1427472296077" expanded="true" signature="3274:3311" placeholder="SELECT html ..RESULTS..." />
+                <marker date="1427472296077" expanded="true" signature="4056:4100" placeholder="SELECT ipnum..INPUTS..." />
+                <marker date="1427472296077" expanded="true" signature="4402:4438" placeholder="INSERT INTO ..." />
+                <marker date="1427472296077" expanded="true" signature="4587:4631" placeholder="SELECT ipnum..INPUTS..." />
+                <marker date="1427472296077" expanded="true" signature="4825:4861" placeholder="INSERT INTO ..." />
+                <marker date="1427472296077" expanded="true" signature="4997:5041" placeholder="SELECT ipnum..INPUTS..." />
+                <marker date="1427472296077" expanded="true" signature="5316:5352" placeholder="INSERT INTO ..." />
+                <marker date="1427472296077" expanded="true" signature="5478:5522" placeholder="SELECT ipnum..INPUTS..." />
+                <marker date="1427472296077" expanded="true" signature="5799:5835" placeholder="INSERT INTO ..." />
+                <marker date="1427472296077" expanded="true" signature="6151:6189" placeholder="UPDATE TASKS..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="guidata.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bin/core/guidata.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="935">
+              <caret line="26" column="24" selection-start-line="26" selection-start-column="24" selection-end-line="26" selection-end-column="24" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="navmanager.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/bin/core/navmanager.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="3803" max-vertical-offset="4556">
+              <caret line="215" column="59" selection-start-line="215" selection-start-column="59" selection-end-line="215" selection-end-column="59" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -80,8 +113,8 @@
       <file leaf-file-name="gui_interaction.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bin/core/gui_interaction.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1284" max-vertical-offset="5695">
-              <caret line="309" column="88" selection-start-line="309" selection-start-column="88" selection-end-line="309" selection-end-column="88" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1777" max-vertical-offset="5729">
+              <caret line="123" column="42" selection-start-line="123" selection-start-column="42" selection-end-line="123" selection-end-column="42" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -92,8 +125,8 @@
       <file leaf-file-name="constants.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/bin/core/constants.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="170">
-              <caret line="4" column="23" selection-start-line="4" selection-start-column="23" selection-end-line="4" selection-end-column="23" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="187">
+              <caret line="5" column="21" selection-start-line="5" selection-start-column="21" selection-end-line="5" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -132,9 +165,10 @@
         <option value="$PROJECT_DIR$/bin/core/gui/gui_interaction.py" />
         <option value="$PROJECT_DIR$/bin/core/trial.py" />
         <option value="$PROJECT_DIR$/thumssy/basicnav.py" />
-        <option value="$PROJECT_DIR$/bin/core/navmanager.py" />
         <option value="$PROJECT_DIR$/bin/core/translator.py" />
         <option value="$PROJECT_DIR$/bin/core/gui_interaction.py" />
+        <option value="$PROJECT_DIR$/bin/core/navmanager.py" />
+        <option value="$PROJECT_DIR$/bin/core/guidata.py" />
         <option value="$PROJECT_DIR$/bin/core/constants.py" />
         <option value="$PROJECT_DIR$/bin/core/tasks.py" />
       </list>
@@ -146,7 +180,7 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1616" />
+    <option name="width" value="1612" />
     <option name="height" value="876" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -269,6 +303,26 @@
       <module name="MagPy" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/bin/core/gui_interaction.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="navmanager" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/bin/core" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="MagPy" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/bin/core/navmanager.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <RunnerSettings RunnerId="PythonRunner" />
@@ -457,12 +511,14 @@
     <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
       <method />
     </configuration>
-    <list size="1">
+    <list size="2">
       <item index="0" class="java.lang.String" itemvalue="Python.gui_interaction (1)" />
+      <item index="1" class="java.lang.String" itemvalue="Python.navmanager" />
     </list>
     <recent_temporary>
-      <list size="1">
+      <list size="2">
         <item index="0" class="java.lang.String" itemvalue="Python.gui_interaction (1)" />
+        <item index="1" class="java.lang.String" itemvalue="Python.navmanager" />
       </list>
     </recent_temporary>
   </component>
@@ -480,18 +536,18 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1616" height="876" extended-state="1" />
+    <frame x="-8" y="-8" width="1612" height="876" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34680575" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.34680575" sideWeight="0.5" order="12" side_tool="true" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.29726207" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1625" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16290727" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32969153" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3285528" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -812,13 +868,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/bin/core/navmanager.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.60192835" vertical-offset="3830" max-vertical-offset="4556">
-          <caret line="251" column="19" selection-start-line="251" selection-start-column="19" selection-end-line="251" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/thumssy/basicnav.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.6671177" vertical-offset="0" max-vertical-offset="739">
@@ -849,35 +898,63 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/bin/core/gui_interaction.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1284" max-vertical-offset="5695">
-          <caret line="309" column="88" selection-start-line="309" selection-start-column="88" selection-end-line="309" selection-end-column="88" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="1777" max-vertical-offset="5729">
+          <caret line="123" column="42" selection-start-line="123" selection-start-column="42" selection-end-line="123" selection-end-column="42" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/bin/core/navmanager.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="3497" max-vertical-offset="4556">
+          <caret line="215" column="59" selection-start-line="215" selection-start-column="59" selection-end-line="215" selection-end-column="59" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bin/core/guidata.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="935">
+          <caret line="26" column="24" selection-start-line="26" selection-start-column="24" selection-end-line="26" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/bin/core/constants.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="170">
-          <caret line="4" column="23" selection-start-line="4" selection-start-column="23" selection-end-line="4" selection-end-column="23" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="187">
+          <caret line="5" column="21" selection-start-line="5" selection-start-column="21" selection-end-line="5" selection-end-column="21" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/bin/core/tasks.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.962818" vertical-offset="968" max-vertical-offset="1683">
-          <caret line="28" column="26" selection-start-line="28" selection-start-column="26" selection-end-line="28" selection-end-column="26" />
+        <state vertical-scroll-proportion="0.50097847" vertical-offset="1291" max-vertical-offset="2958">
+          <caret line="91" column="51" selection-start-line="91" selection-start-column="51" selection-end-line="91" selection-end-column="51" />
           <folding>
             <element signature="e#0#14#0" expanded="true" />
-            <marker date="1427439479692" expanded="true" signature="686:801" placeholder="CREATE TABLE..TASKS..." />
-            <marker date="1427439479692" expanded="true" signature="831:905" placeholder="CREATE TABLE..INPUTS..." />
-            <marker date="1427439479692" expanded="true" signature="935:991" placeholder="CREATE TABLE..RESULTS..." />
-            <marker date="1427439479692" expanded="true" signature="1343:1381" placeholder="INSERT INTO ..." />
-            <marker date="1427439479692" expanded="true" signature="1431:1466" placeholder="INSERT INTO ..." />
-            <marker date="1427439479692" expanded="true" signature="2601:2637" placeholder="INSERT INTO ..." />
-            <marker date="1427439479692" expanded="true" signature="2881:2919" placeholder="UPDATE TASKS..." />
+            <marker date="1427472296077" expanded="true" signature="686:801" placeholder="CREATE TABLE..TASKS..." />
+            <marker date="1427472296077" expanded="true" signature="831:905" placeholder="CREATE TABLE..INPUTS..." />
+            <marker date="1427472296077" expanded="true" signature="935:991" placeholder="CREATE TABLE..RESULTS..." />
+            <marker date="1427472296077" expanded="true" signature="1344:1382" placeholder="INSERT INTO ..." />
+            <marker date="1427472296077" expanded="true" signature="1432:1467" placeholder="INSERT INTO ..." />
+            <marker date="1427472296077" expanded="true" signature="1884:1928" placeholder="SELECT ipnum..INPUTS..." />
+            <marker date="1427472296077" expanded="true" signature="2110:2147" placeholder="SELECT html ..RESULTS..." />
+            <marker date="1427472296077" expanded="true" signature="2386:2422" placeholder="INSERT INTO ..." />
+            <marker date="1427472296077" expanded="true" signature="3002:3046" placeholder="SELECT ipnum..INPUTS..." />
+            <marker date="1427472296077" expanded="true" signature="3274:3311" placeholder="SELECT html ..RESULTS..." />
+            <marker date="1427472296077" expanded="true" signature="4056:4100" placeholder="SELECT ipnum..INPUTS..." />
+            <marker date="1427472296077" expanded="true" signature="4402:4438" placeholder="INSERT INTO ..." />
+            <marker date="1427472296077" expanded="true" signature="4587:4631" placeholder="SELECT ipnum..INPUTS..." />
+            <marker date="1427472296077" expanded="true" signature="4825:4861" placeholder="INSERT INTO ..." />
+            <marker date="1427472296077" expanded="true" signature="4997:5041" placeholder="SELECT ipnum..INPUTS..." />
+            <marker date="1427472296077" expanded="true" signature="5316:5352" placeholder="INSERT INTO ..." />
+            <marker date="1427472296077" expanded="true" signature="5478:5522" placeholder="SELECT ipnum..INPUTS..." />
+            <marker date="1427472296077" expanded="true" signature="5799:5835" placeholder="INSERT INTO ..." />
+            <marker date="1427472296077" expanded="true" signature="6151:6189" placeholder="UPDATE TASKS..." />
           </folding>
         </state>
       </provider>
