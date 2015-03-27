@@ -12,12 +12,11 @@ import gui
 import right_item
 import left_item
 import guidata as data
+import constants
 
 import infoDialogs as d
 
-path.append("..")
 import tasks
-path.append("../main")
 import youtube
 
 
@@ -185,29 +184,29 @@ class gui_interaction(QDialog, gui.Ui_main_window):
                 self.tasklist.setItemWidget(listItem, li)
 
         elif self.currentMainTab[1]  == 'myvault':
-            txt = open('../../logs/mvlog.txt').read()
+            txt = open(constants.mvlog).read()
             self.myvaultconsole.setText(txt)
 
         elif self.currentMainTab[1] == 'log':
-            txt = open('../../logs/tasklog.txt').read()
+            txt = open(constants.tasklog).read()
             self.console.setText(txt)
 
         elif self.currentMainTab[1] == 'settings':
-            txt = open('../../logs/tasklog.txt').read()
+            txt = open(constants.tasklog).read()
             self.console.setText(txt)
 
     def vaultchecker(self):
         if not self.auth:
             pass
         else:
-            url = "http://projectmagpy.tk/myvault/appvault.php?link=true&u=" + \
+            url = constants.vaultserver + \
                   self.username.text().split("@")[0] + "&p=" + self.password.text()
             txt = urllib.urlopen(url).read()
             li = BeautifulSoup(txt).text.replace("Hosting24 Analytics CodeEnd Of Analytics Code", "").split("\n")
             if len(li[0]) > 0:
-                open("../../logs/mvlog.txt", "a").write("\n" + time.asctime() + ": Found " + str(len(li)) + " link(s)")
+                open(constants.mvlog, "a").write("\n" + time.asctime() + ": Found " + str(len(li)) + " link(s)")
                 for i in li:
-                    open("../../logs/mvlog.txt", "a").write("\n" + time.asctime() + ": Starting download of " + i)
+                    open(constants.mvlog, "a").write("\n" + time.asctime() + ": Starting download of " + i)
                     if "youtube.com" in i:
                         if 'watch?' in i:
                             self.v = youtube.youtube()
@@ -219,7 +218,7 @@ class gui_interaction(QDialog, gui.Ui_main_window):
                         if not os.path.isdir("../../files"):
                             os.mkdir("../../files")
                         urllib.urlretrieve(i, "../../files/" + i.split("/")[-1])
-                    open("../../logs/mvlog.txt", "a").write("\n" + time.asctime() + ": Finished download of " + i)
+                    open(constants.mvlog, "a").write("\n" + time.asctime() + ": Finished download of " + i)
 
 
     def myvaultlogin(self, logout):
@@ -306,12 +305,12 @@ class gui_interaction(QDialog, gui.Ui_main_window):
 
 
     def savelog(self):
-        txt = open('../../logs/tasklog.txt').read()
-        open('C://savedlog.txt', 'w').write(txt)
-        open('../../logs/tasklog.txt', 'a').write("\n# Logs Saved to C://savedlog.txt")
+        txt = open(constants.tasklog).read()
+        open(constants.savelogloc, 'w').write(txt)
+        open(constants.tasklog, 'a').write("\n# Logs Saved to:  " + constants.savelogloc)
 
     def clearlog(self):
-        open('../../logs/tasklog.txt', 'w').write("\n# Logs Cleared")
+        open(constants.tasklog, 'w').write("\n# Logs Cleared")
 
     def looper(self):
         while True:

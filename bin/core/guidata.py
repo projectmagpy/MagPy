@@ -1,10 +1,10 @@
 tabHeadings = ["File Management", "Page Navigation", "Selection", "Constraints", "Export"]
 btns = [
-    ["Text", "Images", "Videos", "Files", "HTML"],
+    ["Text", "Images", "Videos", "PDF", "HTML"],
     ["Search Engine", "Single URL", "URL list", "Iterative", "Recursive"],
     ["HTML attributes", "Whole HTML", "Whole Text", "From Text", "Regular Expressions"],
     ["Size", "Count", "Consists of", "Not Consists of"],
-    ["Doc", "PDF", "Text file", "Image", "Videos", "XML", "JSON"]
+    ["Doc", "PDF", "Text file", "Image", "Videos",  "JSON"]
 ]
 
 
@@ -17,7 +17,7 @@ inputs = [
         ["Enter Keyword or URL containing the file *"]
     ],
     [
-        ["Keyword *", "Number of Results", "Extract just links (y/n)"],
+        ["Keyword *", "Number of Results", "Type", "Extract just links (y/n)"],
         ["URL *"],
         ["URL " + str(i) for i in range(1, 6)],
         ["Base URL *", "Type(text/num) *", "Starting character *", "Ending Character *"],
