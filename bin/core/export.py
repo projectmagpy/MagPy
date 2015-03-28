@@ -14,7 +14,7 @@ class csv:
 
 class docx:
     def __init__(self, title, data, text=True):
-        self.data = data
+        self.data = data.split("\n")
         self.title = title
         self.text = text
 
@@ -25,11 +25,12 @@ class docx:
             filename += '.docx'
         document = Document()
         h = document.add_heading(self.title, 0)
-        h.add_run('bold').bold = True
 
         if self.text:
+            print self.data
             for p in self.data:
                 document.add_paragraph(p)
+                print p
         else:
             table = document.add_table(rows=len(self.data), cols=len(self.data[0]))
             r, c = -1, -1
@@ -73,3 +74,10 @@ class json:
         with open(filename, mode) as f:
             f.write(js)
         f.close()
+
+if __name__ == '__main__':
+    import urllib
+    from BeautifulSoup import BeautifulSoup as b
+    bb = b(urllib.urlopen("http://www.thehindu.com/sci-tech/science/irnss1d-launch/article7043608.ece?homepage=true").read())
+    bs = bb.findAll("p")
+    docx(bb.find("title").text, "\n".join([s.text for s in bs])).export("a")

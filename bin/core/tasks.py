@@ -67,11 +67,14 @@ class TaskManager():
         self.funcs[self.tasklist[tnum+1][1]](tnum+1)
 
 
+
     def constrain(self, task):
         pass
 
+
     def export(self, task):
         pass
+
 
     def file(self, tnum):
         task = self.tasklist[tnum]
@@ -83,22 +86,79 @@ class TaskManager():
                ips[i[0]] = i[1]
 
             data = ""
-            if len(i) == 0:
+            if len(ips) == 0:
                 html = self.conn.execute("SELECT html from RESULTS WHERE task=?", (tnum-1,))
                 b = BeautifulSoup(html)
-                data = b.text
+                data = "\n".join(i.text for i in b.findAll("p"))
             else:
-                data = requests.get(ips[0]).text
+                html = requests.get(ips[0])
+                b = BeautifulSoup(html)
+                data = "\n".join(i.text for i in b.findAll("p"))
             open(constants.textop, "w").write(data)
 
         if task[2] == 1:  # images
-            pass
+            tres = self.conn.execute("SELECT ipnum, value from INPUTS WHERE task=?", (tnum,))
+            ips = [""]
+            res = [list(i) for i in tres]
+            for i in res:
+               ips[i[0]] = i[1]
+
+            data = ""
+            if len(ips) == 0:
+                link, html = self.conn.execute("SELECT link, html from RESULTS WHERE task=?", (tnum-1,))
+            else:
+                html = requests.get(ips[0])
+            b = BeautifulSoup(html)
+            for im in b.findAll("img"):
+                urllib.urlopen(im["href"], constants.fileloc + "/" + im["href"].split("/")[-1])
+
         if task[2] == 2:  # videos
-            pass
+            tres = self.conn.execute("SELECT ipnum, value from INPUTS WHERE task=?", (tnum,))
+            ips = [""]
+            res = [list(i) for i in tres]
+            for i in res:
+               ips[i[0]] = i[1]
+
+            data = ""
+            if len(ips) == 0:
+                link, html = self.conn.execute("SELECT link, html from RESULTS WHERE task=?", (tnum-1,))
+            else:
+                html = requests.get(ips[0])
+            b = BeautifulSoup(html)
+            for im in b.findAll("a"):
+                if "mp4" in im["href"]:
+                    urllib.urlopen(im["href"], constants.fileloc + "/" + im["href"].split("/")[-1])
+
         if task[2] == 3:  # files
-            pass
+            tres = self.conn.execute("SELECT ipnum, value from INPUTS WHERE task=?", (tnum,))
+            ips = [""]
+            res = [list(i) for i in tres]
+            for i in res:
+               ips[i[0]] = i[1]
+
+            data = ""
+            if len(ips) == 0:
+                link, html = self.conn.execute("SELECT link, html from RESULTS WHERE task=?", (tnum-1,))
+            else:
+                html = requests.get(ips[0])
+            b = BeautifulSoup(html)
+            for im in b.findAll("a"):
+                if "pdf" in im["href"]:
+                    urllib.urlopen(im["href"], constants.fileloc + "/" + im["href"].split("/")[-1])
+
         if task[2] == 4:  # html
-            pass
+            tres = self.conn.execute("SELECT ipnum, value from INPUTS WHERE task=?", (tnum,))
+            ips = [""]
+            res = [list(i) for i in tres]
+            for i in res:
+               ips[i[0]] = i[1]
+
+            data = ""
+            if len(ips) == 0:
+                link, html = self.conn.execute("SELECT link, html from RESULTS WHERE task=?", (tnum-1,))
+            else:
+                html = requests.get(ips[0])
+            open(constants.fileloc + "op.html", "w").write(html)
 
         self.updateStatus(self.tasklist[tnum][0], "Task Completed")
         self.updateStatus(self.tasklist[tnum+1][0], "Task Initiated")

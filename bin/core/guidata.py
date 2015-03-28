@@ -4,7 +4,7 @@ btns = [
     ["Search Engine", "Single URL", "URL list", "Iterative", "Recursive"],
     ["HTML attributes", "Whole HTML", "Whole Text", "From Text", "Regular Expressions"],
     ["Size", "Count", "Consists of", "Not Consists of"],
-    ["Doc", "PDF", "Text file", "Image", "Videos",  "JSON"]
+    ["Doc", "Text file"]
 ]
 
 
