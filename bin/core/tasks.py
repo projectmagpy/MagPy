@@ -44,18 +44,24 @@ class TaskManager():
         if task[2] == 0:  # HTML attributes
             tres = self.conn.execute("SELECT ipnum, value from INPUTS WHERE task=?", (tnum,))
             ips = ["", "", ""]
-            res = [list(i) for i in tres]
+            res = [list(tres.fetchone())[1]]
             for i in res:
-               ips[i[0]] = i[1]
+               ips[0] = i
 
             html = self.conn.execute("SELECT html from RESULTS WHERE task=?", (tnum-1,))
-            b = BeautifulSoup(html)
-            if ips[2] != "":
-                r1 = b.find(ips[0], attrs={"id": ips[2]})
-            else:
-                r1 = " :: ".join(b.findAll(ips[0]))
+            r1 = ""
+            for m in html.fetchall():
+                b = BeautifulSoup(list(m)[0])
+                if ips[2] != "":
+                    r1 += b.find(ips[0], attrs={"id": ips[2]})
+                else:
+                    r1 += " :: ".join([i.text for i in b.findAll(str(ips[0]))])
+            try:
+                self.conn.execute("INSERT INTO RESULTS VALUES (?, ?, ?)", (tnum, " ", unicode(r1, errors="ignore")))
+            except:
+                self.conn.execute("INSERT INTO RESULTS VALUES (?, ?, ?)", (tnum, " ", r1.encode("utf-8")))
 
-            self.conn.execute("INSERT INTO RESULTS VALUES (?, ?, ?)", (tnum, " ", unicode(r1, errors="ignore")))
+
 
         if task[2] == 3:  # From Text
             pass
@@ -72,8 +78,57 @@ class TaskManager():
         pass
 
 
-    def export(self, task):
-        pass
+    def export(self, tnum):
+        task = self.tasklist[tnum]
+        if task[2] == 0:  # Docx
+            html = self.conn.execute("SELECT html from RESULTS WHERE task=?", (tnum-1,))
+            # print list(html.fetchone())[0]
+            k = 0
+            for h in html.fetchall():
+                ht2 = list(h)[0]
+                b = BeautifulSoup(ht2)
+
+                if "<p>" in ht2:
+                    ht = "\n".join([i.text for i in b.findAll("p")])
+                else:
+                    ht = b.text
+
+                tres = self.conn.execute("SELECT ipnum, value from INPUTS WHERE task=?", (tnum,))
+                ips = [""]
+                res = [list(i) for i in tres]
+                for i in res:
+                   ips[0] = i[1]
+                try:
+                    title = b.find("title").text
+                except:
+                    title="Exported from magpy"
+                docx(title, ht).export(str(k) + ips[0])
+                k += 1
+
+        if task[2] == 3:  # to Text
+            html = self.conn.execute("SELECT html from RESULTS WHERE task=?", (tnum-1,))
+            # print list(html.fetchone())[0]
+            k = 0
+            for h in html.fetchall():
+                ht2 = list(h)[0]
+                b = BeautifulSoup(ht2)
+
+                if "<p>" in ht2:
+                    ht = "\n".join([i.text for i in b.findAll("p")])
+                else:
+                    ht = b.text
+
+                tres = self.conn.execute("SELECT ipnum, value from INPUTS WHERE task=?", (tnum,))
+                ips = [""]
+                res = [list(i) for i in tres]
+                for i in res:
+                   ips[0] = i[1]
+                text(ht).export(ips[0])
+
+
+        self.updateStatus(self.tasklist[tnum][0], "Task Completed")
+        self.updateStatus(self.tasklist[tnum+1][0], "Task Initiated")
+        self.funcs[self.tasklist[tnum+1][1]](tnum+1)
 
 
     def file(self, tnum):
@@ -88,11 +143,11 @@ class TaskManager():
             data = ""
             if len(ips) == 0:
                 html = self.conn.execute("SELECT html from RESULTS WHERE task=?", (tnum-1,))
-                b = BeautifulSoup(html)
+                b = BeautifulSoup(list(html.fetchone())[0])
                 data = "\n".join(i.text for i in b.findAll("p"))
             else:
                 html = requests.get(ips[0])
-                b = BeautifulSoup(html)
+                b = BeautifulSoup(list(html.fetchone())[0])
                 data = "\n".join(i.text for i in b.findAll("p"))
             open(constants.textop, "w").write(data)
 
@@ -108,7 +163,7 @@ class TaskManager():
                 link, html = self.conn.execute("SELECT link, html from RESULTS WHERE task=?", (tnum-1,))
             else:
                 html = requests.get(ips[0])
-            b = BeautifulSoup(html)
+            b = BeautifulSoup(list(html.fetchone())[0])
             for im in b.findAll("img"):
                 urllib.urlopen(im["href"], constants.fileloc + "/" + im["href"].split("/")[-1])
 
@@ -124,7 +179,7 @@ class TaskManager():
                 link, html = self.conn.execute("SELECT link, html from RESULTS WHERE task=?", (tnum-1,))
             else:
                 html = requests.get(ips[0])
-            b = BeautifulSoup(html)
+            b = BeautifulSoup(list(html.fetchone())[0])
             for im in b.findAll("a"):
                 if "mp4" in im["href"]:
                     urllib.urlopen(im["href"], constants.fileloc + "/" + im["href"].split("/")[-1])
@@ -141,7 +196,7 @@ class TaskManager():
                 link, html = self.conn.execute("SELECT link, html from RESULTS WHERE task=?", (tnum-1,))
             else:
                 html = requests.get(ips[0])
-            b = BeautifulSoup(html)
+            b = BeautifulSoup(list(html.fetchone())[0])
             for im in b.findAll("a"):
                 if "pdf" in im["href"]:
                     urllib.urlopen(im["href"], constants.fileloc + "/" + im["href"].split("/")[-1])
@@ -174,7 +229,10 @@ class TaskManager():
                ips[i[0]] = i[1]
             s = SearchEngine(keyword=ips[0], pages=int(ips[1]), type=ips[2])
             for i in s.search(False):
-                self.conn.execute("INSERT INTO RESULTS VALUES (?, ?, ?)", (tnum, i[0], unicode(i[1], errors="ignore")))
+                try:
+                    self.conn.execute("INSERT INTO RESULTS VALUES (?, ?, ?)", (tnum, i[0], unicode(i[1], errors="ignore")))
+                except:
+                    pass
 
         if task[2] == 1 or task[2] == 2:  # Single and multi
             tres = self.conn.execute("SELECT ipnum, value from INPUTS WHERE task=?", (tnum,))
@@ -183,7 +241,10 @@ class TaskManager():
             for i in res:
                ips.append(i[1])
             for i in ips:
-                self.conn.execute("INSERT INTO RESULTS VALUES (?, ?, ?)", (tnum, i, unicode(urllib.urlopen(i), errors="ignore")))
+                try:
+                    self.conn.execute("INSERT INTO RESULTS VALUES (?, ?, ?)", (tnum, i, unicode(urllib.urlopen(i).read(), errors="ignore")))
+                except:
+                    pass
 
         if task[2] == 3:  # Iterative
             tres = self.conn.execute("SELECT ipnum, value from INPUTS WHERE task=?", (tnum,))
@@ -192,7 +253,10 @@ class TaskManager():
             for i in res:
                ips[i[0]] = i[1]
             for i in basicnav().iterativenav(i[0], i[1], i[2], i[3]):
-                self.conn.execute("INSERT INTO RESULTS VALUES (?, ?, ?)", (tnum, i[0], unicode(i[1], errors="ignore")))
+                try:
+                    self.conn.execute("INSERT INTO RESULTS VALUES (?, ?, ?)", (tnum, i[0], unicode(i[1], errors="ignore")))
+                except:
+                    pass
 
         if task[2] == 4:  # Recursive
             tres = self.conn.execute("SELECT ipnum, value from INPUTS WHERE task=?", (tnum,))
@@ -202,7 +266,10 @@ class TaskManager():
                ips[i[0]] = i[1]
             r = recursivenav(i[0], i[1], i[2])
             for i in r.search():
-                self.conn.execute("INSERT INTO RESULTS VALUES (?, ?, ?)", (tnum, i[0], unicode(i[1], errors="ignore")))
+                try:
+                    self.conn.execute("INSERT INTO RESULTS VALUES (?, ?, ?)", (tnum, i[0], unicode(i[1], errors="ignore")))
+                except:
+                    pass
 
 
         self.updateStatus(self.tasklist[tnum][0], "Task Completed")

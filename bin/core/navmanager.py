@@ -156,20 +156,23 @@ class SearchEngine():
         It gets self.pages of links from Search Engines, sends them to the formatter functions and gets the lists.
         :return: nothing
         """
-        if self.type == "text":
-            temp = self.google_proc() + self.yahoo_proc() + self.bing_proc()
-            for i in temp:
-                f = 0
-                for j in self.uniquelinks:
-                    if i[1] == j[1]:
-                        f = 1
-                if f == 0:
-                    self.uniquelinks.append(i)
-            if links:
-                yield self.uniquelinks
-            else:  # [[link, data], [link, data] ...]
-                for li in self.uniquelinks:
-                    yield [li[1], self.data_collector(li[1])]
+        try:
+            if self.type == "text":
+                temp = self.google_proc() + self.yahoo_proc() + self.bing_proc()
+                for i in temp:
+                    f = 0
+                    for j in self.uniquelinks:
+                        if i[1] == j[1]:
+                            f = 1
+                    if f == 0:
+                        self.uniquelinks.append(i)
+                if links:
+                    yield self.uniquelinks
+                else:  # [[link, data], [link, data] ...]
+                    for li in self.uniquelinks:
+                        yield [li[1], self.data_collector(li[1])]
+        except:
+            pass
 
 
     def data_collector(self, url):
@@ -183,33 +186,6 @@ class SearchEngine():
             return html
         except:
             pass
-
-
-    def video_link_collector(self, count):
-        """
-        Collect links for videos related to self.keyword
-        :param count: number of links needed
-        :return: list of links
-        """
-        pass
-
-
-    def image_link_collector(self, count):
-        """
-        Collect links for images related to self.keyword from google images
-        :param count: number of links needed
-        :return: list of links
-        """
-        pass
-
-
-    def file_link_collector(self, count):
-        """
-        Collect links for files(doc, txt, pdf, mp3) related to self.keyword
-        :param count: number of links needed
-        :return: list of links
-        """
-        pass
 
 
 class recursivenav():

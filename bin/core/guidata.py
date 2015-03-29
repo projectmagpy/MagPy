@@ -4,7 +4,7 @@ btns = [
     ["Search Engine", "Single URL", "URL list", "Iterative", "Recursive"],
     ["HTML attributes", "Whole HTML", "Whole Text", "From Text", "Regular Expressions"],
     ["Size", "Count", "Consists of", "Not Consists of"],
-    ["Doc", "Text file"]
+    ["Doc", "Text file", "Voice"]
 ]
 
 
@@ -37,9 +37,9 @@ inputs = [
         ["Words *"]
     ],
     [
-        ["If not Based on Search results, enter Keyword/URL"],
-        ["If not Based on Search results, enter Keyword/URL"],
-        ["If not Based on Search results, enter Keyword/URL"],
+        ["filename"],
+        ["filename"],
+        [],
         ["If not Based on Search results, enter Keyword/URL"],
         ["If not Based on Search results, enter Keyword/URL"],
         ["If not Based on Search results, enter Keyword/URL"],
