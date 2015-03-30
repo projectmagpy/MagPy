@@ -3,10 +3,12 @@ from navmanager import *
 from filemanager import *
 from export import *
 import constants
+import speech
 
 
 class TaskManager():
     def __init__(self, tasks, logfilename=constants.tasklog):
+        self.speechcontent = ""
         self.logfilename = logfilename
         open(self.logfilename, "a").write("\n\n**************\nNEW TASKS ADDED\n**************\n")
         self.tasklist = tasks
@@ -74,8 +76,101 @@ class TaskManager():
 
 
 
-    def constrain(self, task):
-        pass
+    def constrain(self, tnum):
+        task = self.tasklist[tnum]
+        if task[2] == 0:  # Size
+            html = self.conn.execute("SELECT html from RESULTS WHERE task=?", (tnum-1,))
+            # print list(html.fetchone())[0]
+            k = 0
+            for h in html.fetchall():
+                ht2 = list(h)[0]
+                b = BeautifulSoup(ht2)
+
+                if "<p>" in ht2:
+                    ht = "\n".join([i.text for i in b.findAll("p")])
+                else:
+                    ht = b.text
+
+                tres = self.conn.execute("SELECT ipnum, value from INPUTS WHERE task=?", (tnum,))
+                ips = [""]
+                res = [list(i) for i in tres]
+                for i in res:
+                   ips[0] = i[1]
+                try:
+                    title = b.find("title").text
+                except:
+                    title="Exported from magpy"
+                hh=0
+                while True:
+                    if ht[int(ips[0]) + hh] == ".":
+                        ht = ht[0:(int(ips[0]) + hh)]
+                        break
+                    hh += 1
+                k += 1
+
+        if task[2] == 1:  # Count
+            html = self.conn.execute("SELECT html from RESULTS WHERE task=?", (tnum-1,))
+            # print list(html.fetchone())[0]
+            k = 0
+            for h in html.fetchall():
+                ht2 = list(h)[0]
+                b = BeautifulSoup(ht2)
+
+                if "<p>" in ht2:
+                    ht = "\n".join([i.text for i in b.findAll("p")])
+                else:
+                    ht = b.text
+
+                tres = self.conn.execute("SELECT ipnum, value from INPUTS WHERE task=?", (tnum,))
+                ips = [""]
+                res = [list(i) for i in tres]
+                for i in res:
+                   ips[0] = i[1]
+                try:
+                    title = b.find("title").text
+                except:
+                    title="Exported from magpy"
+                hh=0
+                while True:
+                    if ht[int(ips[0]) + hh] == ".":
+                        ht = ht[0:(int(ips[0]) + hh)]
+                        break
+                    hh += 1
+                k += 1
+
+        if task[2] == 2 or task[2] == 3:  # Contains nd not
+            html = self.conn.execute("SELECT html from RESULTS WHERE task=?", (tnum-1,))
+            # print list(html.fetchone())[0]
+            k = 0
+            for h in html.fetchall():
+                ht2 = list(h)[0]
+                b = BeautifulSoup(ht2)
+
+                if "<p>" in ht2:
+                    ht = "\n".join([i.text for i in b.findAll("p")])
+                else:
+                    ht = b.text
+
+                tres = self.conn.execute("SELECT ipnum, value from INPUTS WHERE task=?", (tnum,))
+                ips = [""]
+                res = [list(i) for i in tres]
+                for i in res:
+                   ips[0] = i[1]
+                if task[2] == 2:
+                    if ips[0] not in ht:
+                        self.conn.execute("UPDATE RESULTS set task=\"-1\" WHERE html=?", (ht2,))
+                if task[2] == 3:
+                    if ips[0] in ht:
+                        self.conn.execute("UPDATE RESULTS set task=\"-1\" WHERE html=?", (ht2,))
+
+
+
+
+
+        self.updateStatus(self.tasklist[tnum][0], "Task Completed")
+        self.updateStatus(self.tasklist[tnum+1][0], "Task Initiated")
+        self.funcs[self.tasklist[tnum+1][1]](tnum+1)
+
 
 
     def export(self, tnum):
@@ -105,7 +200,7 @@ class TaskManager():
                 docx(title, ht).export(str(k) + ips[0])
                 k += 1
 
-        if task[2] == 3:  # to Text
+        if task[2] == 1:  # to Text
             html = self.conn.execute("SELECT html from RESULTS WHERE task=?", (tnum-1,))
             # print list(html.fetchone())[0]
             k = 0
@@ -124,6 +219,31 @@ class TaskManager():
                 for i in res:
                    ips[0] = i[1]
                 text(ht).export(ips[0])
+
+        if task[2] == 2:  # to voice
+            html = self.conn.execute("SELECT html from RESULTS WHERE task=?", (tnum-1,))
+            # print list(html.fetchone())[0]
+            k = 0
+            for h in html.fetchall():
+                ht2 = list(h)[0]
+                b = BeautifulSoup(ht2)
+
+                if "<p>" in ht2:
+                    ht = "\n".join([i.text for i in b.findAll("p")])
+                else:
+                    ht = b.text
+
+                tres = self.conn.execute("SELECT ipnum, value from INPUTS WHERE task=?", (tnum,))
+                ips = [""]
+                res = [list(i) for i in tres]
+                for i in res:
+                   ips[0] = i[1]
+                try:
+                    title = b.find("title").text
+                except:
+                    title="Exported from magpy"
+                self.speechcontent += title + ".\n" + ht
+                k += 1
 
 
         self.updateStatus(self.tasklist[tnum][0], "Task Completed")
@@ -280,6 +400,10 @@ class TaskManager():
     def updateStatus(self, tasknum, status):
         self.conn.execute('UPDATE TASKS SET status=? WHERE task=?', (status, tasknum))
         open(self.logfilename, "a").write("TASK[" + str(tasknum) + "]: " + status + "\n")
+
+    def talk(self):
+        for i in self.speechcontent.split("."):
+            speech.say(i)
 
 #
 #

@@ -44,7 +44,7 @@ class gui_interaction(QDialog, gui.Ui_main_window):
         self.currentMainTab = [0, 'main']
         self.setupUi(self)
         # self.setWindowFlags(Qt.FramelessWindowHint)
-        self.closebtn.clicked.connect(self.close)
+        self.closebtn.clicked.connect(self.clear)
         self.pause = False
         self.auth = False
         self.th1 = Thread(target=self.looper)
@@ -55,6 +55,11 @@ class gui_interaction(QDialog, gui.Ui_main_window):
         self.initUi()
 
         self.show()
+
+    def clear(self):
+        reload(tasks)
+        self.tasks_display_list = []
+        self.tasksAdded = []
 
     def center(self):
         qr = self.frameGeometry()

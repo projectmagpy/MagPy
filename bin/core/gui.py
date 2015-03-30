@@ -1609,7 +1609,7 @@ class Ui_main_window(object):
         self.retranslateUi(main_window)
         self.mainTabs.setCurrentIndex(0)
         self.stackedWidget.setCurrentIndex(0)
-        QtCore.QObject.connect(self.closebtn, QtCore.SIGNAL("clicked()"), main_window.close)
+
         QtCore.QMetaObject.connectSlotsByName(main_window)
 
     def retranslateUi(self, main_window):
