@@ -1,147 +1,26 @@
 
 # Logs Cleared
-
-**************
-NEW TASKS ADDED
-**************
-Existing data removed
-TASK[0]: Task Initiated
-TASK[0]: Task Completed
-TASK[1]: Task Initiated
-TASK[1]: Task Completed
-TASK[2]: Task Initiated
-TASK[2]: Task Completed
-
-
 **************
 NEW TASKS ADDED
 **************
 
-
-**************
-NEW TASKS ADDED
-**************
-Existing data removed
-TASK[0]: Task Initiated
-TASK[0]: Task Completed
-TASK[1]: Task Initiated
-TASK[1]: Task Completed
-TASK[2]: Task Initiated
-TASK[2]: Task Completed
-
-
-**************
-NEW TASKS ADDED
-**************
-Existing data removed
-TASK[0]: Task Initiated
-TASK[0]: Task Completed
-TASK[1]: Task Initiated
-TASK[1]: Task Completed
-
-
-**************
-NEW TASKS ADDED
-**************
-Existing data removed
-TASK[0]: Task Initiated
-TASK[0]: Task Completed
-TASK[1]: Task Initiated
-TASK[1]: Task Completed
-
-
-**************
-NEW TASKS ADDED
-**************
-Existing data removed
-TASK[0]: Task Initiated
-TASK[0]: Task Completed
-TASK[1]: Task Initiated
-TASK[1]: Task Completed
-
-
-**************
-NEW TASKS ADDED
-**************
-Existing data removed
-TASK[0]: Task Initiated
-TASK[0]: Task Completed
-TASK[1]: Task Initiated
-
-
-**************
-NEW TASKS ADDED
-**************
-Existing data removed
-TASK[0]: Task Initiated
-TASK[0]: Task Completed
-TASK[1]: Task Initiated
-
-
-**************
-NEW TASKS ADDED
-**************
-Existing data removed
-TASK[0]: Task Initiated
-TASK[0]: Task Completed
-TASK[1]: Task Initiated
-TASK[1]: Task Completed
-TASK[2]: Task Initiated
-TASK[2]: Task Completed
-
-
-**************
-NEW TASKS ADDED
-**************
-Existing data removed
-TASK[0]: Task Initiated
-TASK[0]: Task Completed
-TASK[1]: Task Initiated
-TASK[1]: Task Completed
-TASK[2]: Task Initiated
-TASK[2]: Task Completed
-
-
-**************
-NEW TASKS ADDED
-**************
-Existing data removed
-TASK[0]: Task Initiated
-TASK[0]: Task Completed
-TASK[1]: Task Initiated
-TASK[1]: Task Completed
-TASK[2]: Task Initiated
-TASK[2]: Task Completed
-
-
-**************
-NEW TASKS ADDED
-**************
-Existing data removed
-TASK[0]: Task Initiated
-TASK[0]: Task Completed
-TASK[1]: Task Initiated
-TASK[1]: Task Completed
-TASK[2]: Task Initiated
-TASK[2]: Task Completed
-
-
-**************
-NEW TASKS ADDED
-**************
-Existing data removed
-TASK[0]: Task Initiated
-
-
-**************
-NEW TASKS ADDED
-**************
-Existing data removed
-TASK[0]: Task Initiated
-
-
-**************
-NEW TASKS ADDED
-**************
-Existing data removed
-TASK[0]: Task Initiated
+Thu Apr 09 06:43:28 2015: Task[0] : Check completed, starting tasks
+Thu Apr 09 06:43:28 2015: Task[0] : Initiated
+Thu Apr 09 06:43:28 2015: Task[0] : Starting Navigation 
+Thu Apr 09 06:43:44 2015: Task[0] : Processing: url no. 1
+Thu Apr 09 06:43:46 2015: Task[0] : Processing: url no. 2
+Thu Apr 09 06:43:48 2015: Task[0] : Processing: url no. 3
+Thu Apr 09 06:43:48 2015: Task[0] : Obtained data
+Thu Apr 09 06:43:48 2015: Task[0] : Completed
+Thu Apr 09 06:43:48 2015: Task[1] : Initiated
+Thu Apr 09 06:43:48 2015: Task[1] : Selecting required data
+Thu Apr 09 06:43:48 2015: Task[1] : Selection completed
+Thu Apr 09 06:43:48 2015: Task[1] : Completed
+Thu Apr 09 06:43:48 2015: Task[2] : Initiated
+Thu Apr 09 06:43:48 2015: Task[2] : Exporting obtained data
+Thu Apr 09 06:43:48 2015: Task[2] : Exporting: ggg
+Thu Apr 09 06:43:48 2015: Task[2] : Exporting: ggg
+Thu Apr 09 06:43:48 2015: Task[2] : Exporting: ggg
+Thu Apr 09 06:43:49 2015: Task[2] : Export completed
+Thu Apr 09 06:43:49 2015: Task[2] : Completed
+Thu Apr 09 06:43:49 2015: Task[2] : Tasks Completed

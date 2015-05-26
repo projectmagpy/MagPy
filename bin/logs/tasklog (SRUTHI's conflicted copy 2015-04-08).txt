@@ -1,0 +1,11 @@
+
+**************
+NEW TASKS ADDED
+**************
+
+Wed Apr 08 17:34:16 2015: Task[0] : Check completed, starting tasks
+Wed Apr 08 17:34:16 2015: Task[0] : Initiated
+Wed Apr 08 17:34:16 2015: Task[0] : Starting Navigation 
+Wed Apr 08 17:34:36 2015: Task[0] : Obtained data
+Wed Apr 08 17:34:36 2015: Task[0] : Completed
+Wed Apr 08 17:34:36 2015: Task[0] : Tasks Completed
