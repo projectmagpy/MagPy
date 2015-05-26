@@ -1,5 +1,6 @@
 import mechanize, HTMLParser, urllib2, urllib, requests
 from BeautifulSoup import BeautifulSoup
+import ranking_algo as alg
 
 
 class basicnav():
@@ -110,7 +111,7 @@ class SearchEngine():
             heading = HTMLParser.HTMLParser().unescape(item.text)
             item = a.find('a')
             link = item['href']
-            results.append([heading, link])
+            results.append(link)
         return results
 
 
@@ -129,7 +130,7 @@ class SearchEngine():
             for part in turl:
                 if part.startswith('RU='):
                     url = urllib2.unquote(str(part).split('=')[1])
-            results.append([heading, url])
+            results.append(url)
         return results
 
 
@@ -146,7 +147,7 @@ class SearchEngine():
             heading = HTMLParser.HTMLParser().unescape(item.text)
             item = a.find('a')
             link = item['href']
-            results.append([heading, link])
+            results.append(link)
         return results
 
 
@@ -158,19 +159,13 @@ class SearchEngine():
         """
         try:
             if self.type == "text":
-                temp = self.google_proc() + self.yahoo_proc() + self.bing_proc()
-                for i in temp:
-                    f = 0
-                    for j in self.uniquelinks:
-                        if i[1] == j[1]:
-                            f = 1
-                    if f == 0:
-                        self.uniquelinks.append(i)
+                self.uniquelinks = alg.rank(self.google_proc(), self.yahoo_proc(), self.bing_proc())
                 if links:
                     yield self.uniquelinks
                 else:  # [[link, data], [link, data] ...]
                     for li in self.uniquelinks:
-                        yield [li[1], self.data_collector(li[1])]
+                        data, l = self.data_collector(li), len(self.uniquelinks)
+                        yield [li, data, l]
         except:
             pass
 

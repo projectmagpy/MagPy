@@ -4,3 +4,4 @@ open(dir+".qrc", "w").write("<!DOCTYPE RCC><RCC version=\"1.0\">\n\t<qresource>"
 for i in os.listdir(dir):
 	open(dir+".qrc","a").write("\n\t\t<file>"+dir+"/"+i+"</file>")
 open(dir+".qrc", "a").write("\n\t</qresource>\n</RCC>")
+os.system("C:\Python27\Lib\site-packages\PySide\pyside-rcc -o " + dir + "_rc.py " + dir+".qrc")
