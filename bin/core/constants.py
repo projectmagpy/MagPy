@@ -1,7 +1,10 @@
 mvlog = '../logs/mvlog.txt'
-tasklog = '../logs/tasklog.txt'
-vaultserver = "http://projectmagpy.tk/myvault/appvault.php?link=true&u="
+prog = '../logs/prog.txt'
+vaultserver = 'http://projectmagpy.tk/myvault/appvault.php?link=true&u='
 savelogloc = 'C://savedlog.txt'
-taskdbloc = "tasksdb.db"
-textop = "../data.txt"
-fileloc = "../files/"
+fileloc = '../files/'
+texttop = '../data.txt'
+tasklog = '../logs/tasklog.txt'
+mvloc = '../files/'
+taskdbloc = 'tasksdb.db'
+search_algo = 'rec'

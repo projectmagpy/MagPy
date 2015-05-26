@@ -16,7 +16,7 @@ import constants
 
 import infoDialogs as d
 
-import tasks
+import task44s as tasks
 import youtube
 
 
@@ -40,8 +40,11 @@ class gui_interaction(QDialog, gui.Ui_main_window):
 
         self.tasks_display_list = []
         self.tasksAdded = []
+        self.running = False
+        self.taskman = tasks.TaskManager()
         self.items, self.index, self.tabnum = [], 0, 0
         self.currentMainTab = [0, 'main']
+        self.starttime = "nill"
         self.setupUi(self)
         # self.setWindowFlags(Qt.FramelessWindowHint)
         self.closebtn.clicked.connect(self.clear)
@@ -53,8 +56,6 @@ class gui_interaction(QDialog, gui.Ui_main_window):
         self.th2.start()
 
         self.initUi()
-
-        self.show()
 
     def clear(self):
         reload(tasks)
@@ -86,17 +87,34 @@ class gui_interaction(QDialog, gui.Ui_main_window):
 
 
         # Help page
-        self.textBrowser.setText(open("help.txt").read())
-        self.textBrowser_2.setText(open("abt.txt").read())
+        self.textBrowser.setHtml(open("gui/help.html").read())
+        self.textBrowser_2.setText(open("gui/abt.html").read())
 
         # Myvault page
         self.loginbtn.clicked.connect(lambda: self.myvaultlogin(0))
         self.logoutbtn.clicked.connect(lambda: self.myvaultlogin(1))
+        self.myvaultclearbtn.clicked.connect(self.myvaultclear)
 
         # log page
         self.savebtn.clicked.connect(self.savelog)
         self.clearbtn.clicked.connect(self.clearlog)
-        self.backbtn.clicked.connect(self.start)
+        self.co_opensave.clicked.connect(lambda: self.stat_commands("open"))
+        self.co_openlog.clicked.connect(lambda: self.stat_commands("log"))
+        self.closebtn.clicked.connect(lambda: self.stat_commands("stopexec"))
+
+        self.stat_pauseresumebtn.clicked.connect(self.taskman.pauseresume)
+
+        # settings page
+        self.ch_fl.clicked.connect(lambda: self.settings("fl"))
+        self.ch_tl.clicked.connect(lambda: self.settings("tl"))
+        self.ch_ll.clicked.connect(lambda: self.settings("ll"))
+        self.ch_ml.clicked.connect(lambda: self.settings("ml"))
+        self.ch_tn.clicked.connect(lambda: self.settings("tn"))
+        self.ch_re.clicked.connect(lambda: self.settings("re"))
+        self.sp_seo.clicked.connect(lambda: self.settings("sp_seo"))
+        self.sp_rec.clicked.connect(lambda: self.settings("sp_rec"))
+
+
 
         tabWidgets = [self.filenavlist, self.navnavlist, self.selnavlist, self.constraintlist, self.exportnavlist]
         for tab in data.tabHeadings:
@@ -125,11 +143,16 @@ class gui_interaction(QDialog, gui.Ui_main_window):
                 self.msg.setWindowTitle("Error!!!")
                 self.msg.show()
             else:
-                self.taskth = Thread(target=tasks.TaskManager, args=(self.tasksAdded,))
+                self.starttime = time.time()
+                self.taskth = Thread(target=self.taskman.start, args=(self.tasksAdded,))
                 self.taskth.setDaemon(True)
                 self.taskth.start()
+                # self.taskman.start(self.tasksAdded)
+                self.clearlog()
+                self.ChangeTab("log")
         else:
             self.ChangeTab("main")
+            # self.starttime = time.time()
 
 
     def newTask(self, i):
@@ -171,7 +194,6 @@ class gui_interaction(QDialog, gui.Ui_main_window):
         self.prevbtn.setText(data.tabHeadings[currentTabIndex])
         self.nextbtn.setText(data.tabHeadings[(currentTabIndex - 2) % 5])
 
-
     def updateUi(self):
         if self.currentMainTab[1] == 'main':
             self.tasklist.clear()
@@ -179,7 +201,10 @@ class gui_interaction(QDialog, gui.Ui_main_window):
                 li = left_item.Item()
                 li.label.setText(task[2])
                 li.type.setText(task[1])
-                li.desc.setText(task[3])
+                if len(task[3])>50:
+                    li.desc.setText(task[3][0:50] + "...")
+                else:
+                    li.desc.setText(task[3])
 
                 li.itemCloseBtn.clicked.connect(lambda x=self.tasks_display_list.index(task): self.removeItem(x))
                 li.itemUpBtn.clicked.connect(lambda x=self.tasks_display_list.index(task): self.moveItem(x, "Up"))
@@ -192,15 +217,61 @@ class gui_interaction(QDialog, gui.Ui_main_window):
 
         elif self.currentMainTab[1]  == 'myvault':
             txt = open(constants.mvlog).read()
-            self.myvaultconsole.setText(txt)
+            html = ""
+            for i in txt.split("\n"):
+                tt = i.split(":")
+                dt = ":".join(tt[0:3])
+                msg = ":".join(tt[3:])
+                html += '<span style="color:#ff0000;" >' + dt + '</span> : '
+                html += '<span >' + msg + '</span><br/>'
+            self.myvaultconsole.setHtml(html)
+
 
         elif self.currentMainTab[1] == 'log':
             txt = open(constants.tasklog).read()
-            self.console.setText(txt)
+            html = ""
+            ctsk = "0"
+            for i in txt.split("\n"):
+                if ":" in i:
+                    tt = i.split(":")
+                    dt = ":".join(tt[0:3])
+                    msg = ":".join(tt[4:])
+                    tsk = tt[3]
+
+                    html += '<span style="color:#ff0000;margin-left:0px;" >' + " ".join(dt.split(" ")[3]) + '</span> : '
+                    html += '<span style="color:#00ff00;padding-left:10px;" >' + tsk + '</span> : '
+                    html += '<span >' + msg + '</span><br/>'
+
+                    if self.starttime != "nill":
+                        ctsk = tsk.replace("Task[", "").replace("]", "").replace(" ", "")
+
+                elif "*" in i:
+                    html += "<hr/>"
+                elif "NEW TASKS" in i:
+                    html += '<h5><center><span style="color:#c0c0c0;" ><b>NEW TASKS ADDED</b></span></center></h5>'
+            self.console.setHtml(html)
+            vscroll = self.console.verticalScrollBar()
+            vscroll.setValue(vscroll.maximum())
+            if self.starttime != "nill" and self.running:
+                dif = time.time() - self.starttime
+                hr = dif/(60*60)
+                dif %= (60*60)
+                min = dif/60
+                dif %= 60
+                self.stat_ti.setText(str(hr).split(".")[0] + " : " + str(min).split(".")[0] + " : " + str(dif).split(".")[0])
+                self.stat_tk.setText(str(len(self.tasks_display_list)))
+                self.stat_ct.setText(ctsk)
+
+                progress = map(int, open(constants.prog).read().split(","))
+                self.prog_tot.setValue(progress[0])
+                self.prog_cur.setValue(progress[1])
+            self.running = True if open(constants.prog).read().split(",")[0] != '100' else False
 
         elif self.currentMainTab[1] == 'settings':
-            txt = open(constants.tasklog).read()
-            self.console.setText(txt)
+            pass
+
+    def myvaultclear(self):
+        open(constants.mvlog, "w").write("")
 
     def vaultchecker(self):
         if not self.auth:
@@ -234,6 +305,7 @@ class gui_interaction(QDialog, gui.Ui_main_window):
             self.username.setDisabled(False)
             self.password.setDisabled(False)
             self.loginbtn.setDisabled(False)
+            self.loggedstatus.setText("Not Logged in")
         else:
             if len(self.username.text()) > 0:
                     if len(self.password.text()) > 0:
@@ -244,12 +316,14 @@ class gui_interaction(QDialog, gui.Ui_main_window):
                             self.username.setDisabled(True)
                             self.password.setDisabled(True)
                             self.loginbtn.setDisabled(True)
+                            self.loggedstatus.setText("Successfully logged in")
                         else:
                             QMessageBox.information(self, "Error", "Login Error, please try again!!!")
-
+                            self.loggedstatus.setText("Login error")
 
     def removeItem(self, itemNum):
         self.tasks_display_list.pop(itemNum)
+        self.tasklist.pop(itemNum)
 
 
     def moveItem(self, itemNum, dir):
@@ -261,9 +335,6 @@ class gui_interaction(QDialog, gui.Ui_main_window):
                 self.tasks_display_list[itemNum + 1], self.tasks_display_list[itemNum]
 
     def ChangeTab(self, name, sec=0):
-        tabNames = [self.MainUI, self.StatusPage, self.MyVault, self.SettingsPage, self.HelpPage]
-        # self.tabfuncs = [0, self.status, self.myvault, self.settings, self.help]
-
         if sec == 0:
             self.mtabs = ['main', 'log', 'myvault', 'settings', 'help']
             self.newTabName = name
@@ -308,8 +379,6 @@ class gui_interaction(QDialog, gui.Ui_main_window):
         self.hideAnimation1.setEndValue(self.mainTabs.endGeometry)
         self.hideAnimation1.start()
 
-    # self.hideAnimation1.finished.connect(lambda: self.ChangeTab("", sec=1))
-
 
     def savelog(self):
         txt = open(constants.tasklog).read()
@@ -318,6 +387,69 @@ class gui_interaction(QDialog, gui.Ui_main_window):
 
     def clearlog(self):
         open(constants.tasklog, 'w').write("\n# Logs Cleared")
+
+    def settings(self, c):
+        default = "mvlog = '../logs/mvlog.txt'\n" \
+                  "prog = '../logs/prog.txt'\n" \
+                  "vaultserver = 'http://projectmagpy.tk/myvault/appvault.php?link=true&u='\n" \
+                  "savelogloc = 'C://savedlog.txt'"
+
+        tfileloc = constants.fileloc
+        ttextop = constants.texttop
+        ttasklog = constants.tasklog
+        tmvloc = constants.mvloc
+        ttaskdbloc = constants.taskdbloc
+        tsearch_algo = constants.search_algo
+
+        if c == "fl":
+            tfileloc = self.text_fl.text()
+        elif c == "tl":
+            ttextop = self.text_tl.text()
+        elif c == "ll":
+            ttasklog = self.text_ll.text()
+        elif c == "ml":
+            tmvloc = self.text_ml.text()
+        elif c == "tn":
+            ttaskdbloc = self.text_tn.text()
+        elif c == "re":
+            tfileloc = '../files/'
+            ttextop = '../data.txt'
+            ttasklog = '../logs/tasklog.txt'
+            tmvloc = '../files/'
+            ttaskdbloc = 'tasksdb.db'
+            tsearch_algo = 'seo'
+        elif c == "sp_rec":
+            tsearch_algo = 'rec'
+        elif c == "sp_seo":
+            tsearch_algo = 'seo'
+
+        full = default + "\n" + \
+               "fileloc = '" + tfileloc + "'\n" + \
+               "texttop = '" + ttextop + "'\n" + \
+               "tasklog = '" + ttasklog + "'\n" + \
+               "mvloc = '" + tmvloc + "'\n" + \
+               "taskdbloc = '" + ttaskdbloc + "'\n" + \
+               "search_algo = '" + tsearch_algo + "'\n"
+        open("constants.py", "w").write(full)
+        reload(constants)
+        self.close()
+        os.system("gui_interaction.py")
+
+
+    def stat_commands(self, c):
+        if c == "open":
+            cmd = constants.fileloc.replace("/", "\\")
+            open("commands/openfiles.bat", "w").write("@echo off\nexplorer " + cmd)
+            os.system("commands\\openfiles.bat")
+
+        elif c == "log":
+            cmd = constants.tasklog.replace("/", "\\")
+            open("commands/openlog.bat", "w").write("@echo off\nnotepad " + cmd)
+            os.system("commands\\openlog.bat")
+
+        elif c == "stopexec":
+            self.close()
+            os.system("gui_interaction.py restart")
 
     def looper(self):
         while True:
@@ -331,7 +463,22 @@ class gui_interaction(QDialog, gui.Ui_main_window):
 
 
 if __name__ == '__main__':
+    argv.append("building")
     app = QApplication(argv)
-    mp = gui_interaction()
-    mp.show()
+    if "restart" not in argv and "building" not in argv:
+        os.system("commands\\minimize.bat")
+        ss = QSplashScreen(QPixmap("images/splash.png"))
+        ss.show()
+        ss.showMessage("Loading Components", alignment=Qt.AlignBottom|Qt.AlignHCenter, color=Qt.white)
+        mp = gui_interaction()
+        time.sleep(2)
+        ss.showMessage("Initialising Components", alignment=Qt.AlignBottom|Qt.AlignHCenter, color=Qt.white)
+        time.sleep(3)
+        ss.showMessage("Finished Loading. Welcome to MagPy.", alignment=Qt.AlignBottom|Qt.AlignHCenter, color=Qt.white)
+        time.sleep(1)
+        mp.show()
+        ss.hide()
+    else:
+        mp = gui_interaction()
+        mp.show()
     app.exec_()

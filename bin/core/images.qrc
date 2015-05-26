@@ -1,5 +1,29 @@
 <!DOCTYPE RCC><RCC version="1.0">
 	<qresource>
+		<file>images/add73.png</file>
+		<file>images/arrow491.png</file>
+		<file>images/back14.png</file>
+		<file>images/calibration.png</file>
+		<file>images/clipboard44.png</file>
+		<file>images/delete30.png</file>
+		<file>images/document76.png</file>
+		<file>images/document84.png</file>
+		<file>images/door13.png</file>
+		<file>images/floppy15.png</file>
+		<file>images/folder83.png</file>
+		<file>images/lifebelt.png</file>
+		<file>images/navigate2.png</file>
+		<file>images/navigate3.png</file>
+		<file>images/redo5.png</file>
+		<file>images/right39.png</file>
+		<file>images/splash.png</file>
+		<file>images/st.png</file>
+		<file>images/stop24.png</file>
+		<file>images/Thumbs.db</file>
 		<file>images/title.png</file>
+		<file>images/title.psd</file>
+		<file>images/title2.psd</file>
+		<file>images/triple14.png</file>
+		<file>images/undo6.png</file>
 	</qresource>
 </RCC>

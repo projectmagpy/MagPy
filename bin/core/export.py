@@ -1,3 +1,6 @@
+import time
+import constants
+
 class csv:
     def __init__(self, data):
         self.data = data
@@ -13,36 +16,23 @@ class csv:
 
 
 class docx:
-    def __init__(self, title, data, text=True):
-        self.data = data.split("\n")
-        self.title = title
-        self.text = text
-
-    def export(self, filename):
+    def __init__(self, data, fname, text=True):
+        self.data = data
+        filename = constants.fileloc + fname + \
+                   time.asctime().replace(":", "_").replace(" ", "_").replace("%", "_") + ".docx"
         from docx import Document
-
-        if filename.split('.')[-1] != '.docx':
-            filename += '.docx'
         document = Document()
-        h = document.add_heading(self.title, 0)
+        print self.data
+        for page in self.data:
+            # try:
+            title = page[0]
+            data = page[1]
+            h = document.add_heading(title, 0)
+            document.add_paragraph(data)
+            document.add_page_break()
+            # except:
+            #     pass
 
-        if self.text:
-            print self.data
-            for p in self.data:
-                document.add_paragraph(p)
-                print p
-        else:
-            table = document.add_table(rows=len(self.data), cols=len(self.data[0]))
-            r, c = -1, -1
-            for row in self.data:
-                r += 1
-                c = 0
-                for col in row:
-                    hdr_cells = table.rows[0].cells
-                    hdr_cells[c].text = col
-                    c += 1
-
-        document.add_page_break()
         document.save(filename)
 
 
