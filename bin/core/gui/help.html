@@ -1,0 +1,312 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Help</title>
+<style>
+body {
+	background-color: rgb(117, 117, 117);
+}
+body, td, th, hr{
+	color: #FFC;
+}
+h1, h2 {
+	color: #FFFFFF;
+}
+h3, h4, h5, h6 {
+	color: #CCCCCC;
+}
+a {
+  color: #DCD;
+  text-decoration:none;
+}
+a:hover {
+	color:#900;
+}
+</style>
+</head>
+<body>
+	<section id="top"></section>
+    <br/>
+	<h1><center>#MagPY</center></h1>
+	<h3>Help and How-to</h3>
+	<hr/>
+
+	<h5><cite>What is #MagPY?</cite></h5>
+    <p>
+    #MagPY is a constraint based web document extractor which gives you a better web search experience by providing a constraint based search rather than the simple keyword based approach.
+    </p>
+	<p><i>Buttons and functionalities...</i></p>
+	<ol>
+	<li><a href="#nav">Page Navigation</a></li>
+	<ul><li>Search Engine</li><li>Single URL</li><li>URL List</li><li>Iterative</li><li>Recursive</li><li>Keyword</li></ul>
+    
+    <li><a href="#sel">Selection</a></li><ul><li>HTML attributes</li><li>Whole HTML</li><li>Whole Text</li><li>From Text</li><li>Regular Expressions</li></ul>
+
+	<li><a href="#const">Constraints</a></li><ul><li>Size</li><li>Count</li><li>Consists of</li><li>Not Consists of</li></ul>
+
+	<li><a href="#exp">Export</a></li><ul><li>Doc</li><li>PDF</li><li>Text file</li><li>Image</li><li>Videos</li><li>XML</li><li>JSON</li> </ul>
+
+	<li><a href="#file">File Management</a></li><ul><li>Text</li><li>Images</li><li>Videos</li><li>Files</li><li>HTML</li></ul>
+
+	<li><a href="#start">Start</a></li>
+
+	<li><a href="#status">Status</a></li>
+
+	<li><a href="#myvault">MyVault</a></li>
+
+	<li><a href="#settings">Settings</a></li>
+
+	<li><a href="#help">Help</a></li>
+    
+    </ol>
+ <br/><br/><br/><br/>
+
+<section id="nav"></section><h3>
+Page Navigation
+</h3><span ><a href="#top">Go to top</a></span><hr/>
+<ol>
+<li>Search Engine</li>
+<ul>
+<li>Keyword</li>
+<ul>
+<li>Enter the keyword that you want to search.</li>
+<li>Mandatory</li>
+</ul>
+<li>Number of Results</li>
+<ul>
+<li>Enter the number of results you require in numbers.</li>
+<li>Optional</li>
+</ul>
+
+<li>Type</li>
+<ul>
+<li>Type “text” if you need the text data about the keyword entered.</li>
+<li>Type filename if you are searching for a filename.</li>
+<li>Optional.</li>
+</ul>
+</ul>
+
+<li>Single URL</li>
+<ul>
+<li>URL</li><ul>
+<li>Enter the URL you need to search.</li>
+<li>Mandatory</li>
+</ul>
+</ul>
+
+<li>URL List</li>
+<ul>
+<li>URL (1-9)</li><ul>
+<li>Enter the URL‘s you need to search.</li>
+<li>Entries to more than two fields are optional.</li>
+</ul></ul>
+
+<li>Iterative</li>
+<ul>
+<li>Base URL</li><ul>
+<li>Enter the URL that you need to search.</li>
+<li>Mandatory</li>
+</ul>
+<li>Type (text/num)</li><ul>
+<li>Enter “text” for text or enter “num” for number.</li>
+<li>Mandatory</li>
+</ul>
+<li>Starting Character</li><ul>
+<li>Enter the starting number or text.</li>
+<li>Mandatory</li>
+</ul>
+<li>Ending Character</li><ul>
+<li>Enter the ending number or text.</li>
+<li>Mandatory</li>
+</ul>
+</ul>
+
+<li>Recursive</li>
+<ul>
+<li>Base URL</li>
+<ul>
+<li>Enter the URL you need to search.</li><li>Mandatory</li>
+</ul>
+<li>Depth</li>
+<ul>
+<li>Enter a number to indicate the depth up to which you need to search.</li><li>Optional</li>
+</ul>
+<li>Excluded Domains</li>
+<ul>
+<li>Enter the Domain name you need to exclude.</li><li>Optional</li>
+</ul>
+<li>Included Domains </li>
+<ul>
+<li>Enter the Domain name you need to include.</li><li>Optional</li>
+</ul>
+</ul>
+</ol>
+</ol>
+<section id="sel"></section><h3>
+Selection
+</h3><span ><a href="#top">Go to top</a></span><hr/>
+<ul>
+<li>HTML attributes</li>
+<ul>
+<li>Tag</li>
+	<ul><li>Enter the HTML tag name you require.</li><li>Mandatory</li></ul>
+<li>Class</li>
+<li>Name </li>
+<li>ID</li>
+</ul>
+
+<li>Whole HTML</li><ul>
+<li>Nothing to give as parameters.</li>
+<li>Will display the whole HTML content of the required page.</li>
+</ul>
+
+<li>Whole Text</li><ul>
+<li>Nothing to give as parameters.</li>
+<li>Will display the whole content of the required page in text format.
+</li>
+</ul>
+
+
+<li>Regular Expressions</li><ul>
+<li>Pattern</li><ul>
+<li>Enter the regular expression pattern that you need as the search result.
+</li></ul>
+</ul>
+</ul>
+
+<section id="const"></section><h3>
+Constraints
+</h3><span ><a href="#top">Go to top</a></span><hr/>
+<ul>
+<li>Size</li><ul>
+<li>Enter the size of the result you need.</li>
+</ul>
+<li>Type</li><ul>
+<li>Enter the type of result you require.</li></ul>
+
+<li>Count</li><ul>
+<li>Pattern *</li><ul>
+<li>Enter number of times you require the specified pattern in the result.</li>
+<li>Mandatory</li></ul></ul>
+
+<li>Consists of</li><ul>
+<li>Word *</li><ul>
+<li>Enter the word that you require in the program.</li>
+<li>Mandatory</li></ul></ul>
+
+<li>Not Consists of</li><ul>
+<li>Word *</li><ul>
+<li>Enter the word that your result doesn’t want to include.</li>
+<li>Mandatory</li>
+</ul></ul></ul>
+
+<section id="exp"></section><h3>
+Export
+</h3><span ><a href="#top">Go to top</a></span><hr/>
+<ul>
+<li>Doc</li>
+<ul>
+<li>If not based on search results, enter keyword/URL</li>
+<ul>
+<li>Enter the keyword or URL if the result required is not according to the search results.</li></ul></ul>
+
+
+<li>Text File</li>
+<ul>
+<li>If not based on search results, enter keyword/URL</li>
+<ul>
+<li>Enter the keyword or URL if the result required is not according to the search results.</li></ul></ul>
+
+<li>Image</li>
+<ul>
+<li>If not based on search results, enter keyword/URL</li>
+<ul>
+<li>Enter the keyword or URL if the result required is not according to the search results.</li></ul></ul>
+
+
+<li>Videos</li>
+<ul>
+<li>If not based on search results, enter keyword/URL</li>
+<ul>
+<li>Enter the keyword or URL if the result required is not according to the search results.</li></ul></ul>
+
+</ul>
+
+<section id="file"></section><h3>
+File Management
+</h3><span ><a href="#top">Go to top</a></span><hr/>
+<ul>
+<li>Images</li>
+<ul>
+<li>
+Enter keyword or URL containing the file</li>
+<ul>
+<li>Enter the keyword ,otherwise enter the URL in which the file is present</li>
+<li>Mandatory</li>
+</ul>
+</ul>
+
+<li>Videos</li><ul>
+<li>
+Enter keyword or URL containing the file</li>
+<ul>
+<li>Enter the keyword ,otherwise enter the URL in which the file is present</li>
+<li>Mandatory</li>
+</ul>
+</ul>
+
+<li>Files</li>
+<ul>
+<li>
+Enter keyword or URL containing the file
+</li><ul><li>Enter the keyword ,otherwise enter the URL in which the file is present</li>
+<li>Mandatory</li>
+</ul>
+</ul>
+
+<li>HTML</li>
+<ul>
+<li>Enter keyword or URL containing the file</li>
+<ul>
+<li>Enter the keyword ,otherwise enter the URL in which the file is present</li>
+<li>Mandatory</li>
+</ul>
+</ul>
+</ul>
+<section id="start"></section><h3>
+Start</h3><span ><a href="#top">Go to top</a></span><hr/>
+<ul><li>Click start button to execute the tasks you have entered.</li>
+<li>Mandatory to press the button.</li></ul>
+
+<section id="status"></section><h3>
+Status</h3><span ><a href="#top">Go to top</a></span><hr/>
+<ul>
+<li>Clear logs</li>
+<ul><li>Press button to clear all the logs that contains the tasks details.</li></ul>
+<li>Save logs</li>
+<ul><li>Press button to save all the logs.</li></ul>
+<li>Back</li>
+<ul><li>To go back to the previous widget</li></ul>
+</ul>
+<section id="myvault"></section><h3>
+MyVault</h3><span ><a href="#top">Go to top</a></span><hr/>
+<ul>
+<li>User name</li>
+<ul><li>Enter the user name to enter to the MyVault.</li></ul>
+<li>Password</li>
+<ul><li>Enter the password of your account.</li></ul>
+<li>Log in</li>
+<ul><li>Press the button to successfully enter the MyVault facility.</li></ul>
+</ul>
+<section id="settings"></section><h3>
+Settings</h3><span ><a href="#top">Go to top</a></span><hr/>
+<p>Press the button to get the settings. It includes selecting the search algorithm, setting up of the locations to save files and so on.</p>
+
+<section id="help"></section><h3>
+Help</h3><span ><a href="#top">Go to top</a></span><hr/>
+<p>Click the button to get the help, with complete buttons info and about this project.</p>
+
+<br/><br/><hr /><br/>
+</body>
+</html>

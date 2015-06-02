@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'right_l_item.ui'
 #
-# Created: Mon Mar 16 00:21:35 2015
+# Created: Wed Apr 08 10:09:06 2015
 #      by: pyside-uic 0.2.15 running on PySide 1.2.2
 #
 # WARNING! All changes made in this file will be lost!

@@ -3,11 +3,11 @@ from navmanager import *
 from filemanager import *
 from export import *
 import constants
-import speech
+import speech, time
 
 
 class TaskManager():
-    def __init__(self, tasks, logfilename=constants.tasklog):
+    def start(self, tasks, logfilename=constants.tasklog):
         self.speechcontent = ""
         self.logfilename = logfilename
         open(self.logfilename, "a").write("\n\n**************\nNEW TASKS ADDED\n**************\n")
@@ -51,15 +51,16 @@ class TaskManager():
                ips[0] = i
 
             html = self.conn.execute("SELECT html from RESULTS WHERE task=?", (tnum-1,))
-            r1 = ""
+            r1 = "<p>"
             for m in html.fetchall():
                 b = BeautifulSoup(list(m)[0])
                 if ips[2] != "":
                     r1 += b.find(ips[0], attrs={"id": ips[2]})
                 else:
                     r1 += " :: ".join([i.text for i in b.findAll(str(ips[0]))])
+            r1 += "</p>"
             try:
-                self.conn.execute("INSERT INTO RESULTS VALUES (?, ?, ?)", (tnum, " ", unicode(r1, errors="ignore")))
+                self.conn.execute("INSERT INTO RESULTS VALUES (?, ?, ?)", (tnum, " ", "<p>" + unicode(r1, errors="ignore") + "</p>"))
             except:
                 self.conn.execute("INSERT INTO RESULTS VALUES (?, ?, ?)", (tnum, " ", r1.encode("utf-8")))
 
@@ -183,10 +184,10 @@ class TaskManager():
                 ht2 = list(h)[0]
                 b = BeautifulSoup(ht2)
 
-                if "<p>" in ht2:
-                    ht = "\n".join([i.text for i in b.findAll("p")])
-                else:
-                    ht = b.text
+                # if "<p>" in ht2:
+                ht = "\n".join([i.text for i in b.findAll("p")])
+                # else:
+                #     ht = b.text
 
                 tres = self.conn.execute("SELECT ipnum, value from INPUTS WHERE task=?", (tnum,))
                 ips = [""]
@@ -198,7 +199,9 @@ class TaskManager():
                 except:
                     title="Exported from magpy"
                 docx(title, ht).export(str(k) + ips[0])
+                self.speechcontent += title + ".\n" + ht
                 k += 1
+            speech.say(self.speechcontent)
 
         if task[2] == 1:  # to Text
             html = self.conn.execute("SELECT html from RESULTS WHERE task=?", (tnum-1,))
@@ -281,11 +284,17 @@ class TaskManager():
             data = ""
             if len(ips) == 0:
                 link, html = self.conn.execute("SELECT link, html from RESULTS WHERE task=?", (tnum-1,))
+                b = BeautifulSoup(list(html.fetchone())[0])
             else:
                 html = requests.get(ips[0])
-            b = BeautifulSoup(list(html.fetchone())[0])
+                b = BeautifulSoup(html.text)
+
             for im in b.findAll("img"):
-                urllib.urlopen(im["href"], constants.fileloc + "/" + im["href"].split("/")[-1])
+                if ".jpg" in im['src']:
+                    if "http" in im["src"]:
+                        urllib.urlretrieve(im["src"], constants.fileloc + "/" + im["src"].split("/")[-1])
+                    else:
+                        urllib.urlretrieve(ips[0] + im["href"], constants.fileloc + "/" + im["href"].split("/")[-1])
 
         if task[2] == 2:  # videos
             tres = self.conn.execute("SELECT ipnum, value from INPUTS WHERE task=?", (tnum,))
@@ -297,12 +306,20 @@ class TaskManager():
             data = ""
             if len(ips) == 0:
                 link, html = self.conn.execute("SELECT link, html from RESULTS WHERE task=?", (tnum-1,))
+                b = BeautifulSoup(list(html.fetchone())[0])
             else:
                 html = requests.get(ips[0])
-            b = BeautifulSoup(list(html.fetchone())[0])
+                b = BeautifulSoup(html.text)
+
             for im in b.findAll("a"):
-                if "mp4" in im["href"]:
-                    urllib.urlopen(im["href"], constants.fileloc + "/" + im["href"].split("/")[-1])
+                try:
+                    if "mp4" in im["href"]:
+                        if "http" in im["href"]:
+                            urllib.urlretrieve(im["href"], constants.fileloc + "/" + im["href"].split("/")[-1])
+                        else:
+                            urllib.urlretrieve(ips[0] + im["href"], constants.fileloc + "/" + im["href"].split("/")[-1])
+                except:
+                    pass
 
         if task[2] == 3:  # files
             tres = self.conn.execute("SELECT ipnum, value from INPUTS WHERE task=?", (tnum,))
@@ -314,12 +331,19 @@ class TaskManager():
             data = ""
             if len(ips) == 0:
                 link, html = self.conn.execute("SELECT link, html from RESULTS WHERE task=?", (tnum-1,))
+                b = BeautifulSoup(list(html.fetchone())[0])
             else:
                 html = requests.get(ips[0])
-            b = BeautifulSoup(list(html.fetchone())[0])
+                b = BeautifulSoup(html.text)
             for im in b.findAll("a"):
-                if "pdf" in im["href"]:
-                    urllib.urlopen(im["href"], constants.fileloc + "/" + im["href"].split("/")[-1])
+                try:
+                    if "pdf" in im["href"]:
+                        if "http" in im["href"]:
+                            urllib.urlretrieve(im["href"], constants.fileloc + "/" + im["href"].split("/")[-1])
+                        else:
+                            urllib.urlretrieve(ips[0] + im["href"], constants.fileloc + "/" + im["href"].split("/")[-1])
+                except:
+                    pass
 
         if task[2] == 4:  # html
             tres = self.conn.execute("SELECT ipnum, value from INPUTS WHERE task=?", (tnum,))
@@ -332,7 +356,7 @@ class TaskManager():
             if len(ips) == 0:
                 link, html = self.conn.execute("SELECT link, html from RESULTS WHERE task=?", (tnum-1,))
             else:
-                html = requests.get(ips[0])
+                html = urllib.urlopen(ips[0]).read()
             open(constants.fileloc + "op.html", "w").write(html)
 
         self.updateStatus(self.tasklist[tnum][0], "Task Completed")
@@ -399,7 +423,7 @@ class TaskManager():
 
     def updateStatus(self, tasknum, status):
         self.conn.execute('UPDATE TASKS SET status=? WHERE task=?', (status, tasknum))
-        open(self.logfilename, "a").write("TASK[" + str(tasknum) + "]: " + status + "\n")
+        open(self.logfilename, "a").write("\n" + time.asctime() + ": TASK[" + str(tasknum) + "]: " + status + "\n")
 
     def talk(self):
         for i in self.speechcontent.split("."):
